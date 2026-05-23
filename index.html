@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Circuit Mechanisms for Spatial Relation Generation in Diffusion Transformers</title>
+<meta name="description" content="A mechanistic interpretability study of how Diffusion Transformers implement spatial relation generation, comparing random token embeddings vs. pretrained T5 text encoders. CVPR 2026." />
+<meta property="og:title" content="Circuit Mechanisms for Spatial Relation Generation in Diffusion Transformers" />
+<meta property="og:description" content="Mechanistic interpretability of spatial relation circuits in DiTs. CVPR 2026." />
+<meta property="og:type" content="article" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Noto+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --muted: #5b6470;
+    --accent: #1f6feb;
+    --accent-soft: #e8f0fe;
+    --border: #e6e8eb;
+    --code-bg: #f6f8fa;
+    --max: 960px;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "Noto Sans", "Google Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--fg);
+    background: var(--bg);
+    line-height: 1.6;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+  header.hero {
+    padding: 64px 24px 32px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  header.hero h1 {
+    font-family: "Google Sans", sans-serif;
+    font-size: 2.2rem;
+    line-height: 1.25;
+    margin: 0 0 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .venue {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .highlight-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: linear-gradient(135deg, #ff8a3d 0%, #e0245e 100%);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 3px 10px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    box-shadow: 0 1px 4px rgba(224, 36, 94, 0.25);
+  }
+  .authors {
+    font-size: 1.05rem;
+    margin: 12px 0 4px;
+  }
+  .authors a { color: var(--fg); text-decoration: none; border-bottom: 1px dotted var(--muted); }
+  .authors a:hover { color: var(--accent); border-color: var(--accent); }
+  .affil { color: var(--muted); font-size: 0.95rem; margin-bottom: 22px; }
+  .equal { font-size: 0.85rem; color: var(--muted); }
+
+  .links { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 18px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: #1a1a1a;
+    color: #fff !important;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: transform 0.1s ease, background 0.15s ease;
+  }
+  .btn:hover { background: #333; transform: translateY(-1px); }
+  .btn.alt { background: var(--accent-soft); color: var(--accent) !important; }
+  .btn.alt:hover { background: #d9e6fb; }
+
+  section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+  h2 {
+    font-family: "Google Sans", sans-serif;
+    font-size: 1.5rem;
+    margin: 0 0 18px;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+  }
+  h3 {
+    font-family: "Google Sans", sans-serif;
+    font-size: 1.1rem;
+    margin: 24px 0 8px;
+    font-weight: 600;
+  }
+  p { margin: 0 0 14px; }
+  ul { margin: 0 0 14px; padding-left: 22px; }
+  li { margin-bottom: 6px; }
+  code, .mono { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 0.92em; }
+  .inline-code { background: var(--code-bg); padding: 1px 6px; border-radius: 4px; }
+
+  .figure { margin: 28px 0 8px; }
+  .figure img {
+    width: 100%; height: auto; display: block;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: #fafbfc;
+  }
+  .caption {
+    font-size: 0.92rem;
+    color: var(--muted);
+    margin-top: 10px;
+    text-align: left;
+  }
+  .caption b { color: var(--fg); }
+
+  .tldr {
+    background: var(--accent-soft);
+    border-left: 4px solid var(--accent);
+    border-radius: 4px;
+    padding: 18px 22px;
+    margin: 0 0 8px;
+  }
+  .tldr p:last-child { margin-bottom: 0; }
+
+  pre.bibtex {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px 18px;
+    overflow-x: auto;
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.88rem;
+    padding: 28px 24px 48px;
+  }
+  footer a { color: var(--muted); }
+
+  @media (max-width: 640px) {
+    header.hero { padding: 40px 20px 24px; }
+    header.hero h1 { font-size: 1.55rem; }
+    section { padding: 36px 0; }
+    .btn { padding: 8px 14px; font-size: 0.9rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="container">
+    <div class="venue">CVPR 2026 <span class="highlight-badge">★ Highlight</span></div>
+    <h1>Circuit Mechanisms for Spatial Relation Generation<br/>in Diffusion Transformers</h1>
+    <div class="authors">
+      <a href="https://animadversio.github.io/">Binxu Wang</a><sup>*</sup>,
+      <a href="#">Jingxuan Fan</a><sup>*</sup>,
+      <a href="#">Xu Pan</a><sup>*</sup>
+    </div>
+    <div class="affil">
+      Kempner Institute &amp; Harvard University &nbsp;·&nbsp;
+      <span class="equal"><sup>*</sup>Equal contribution</span>
+    </div>
+    <div class="links">
+      <a class="btn" href="https://arxiv.org/abs/2601.06338">📄 Paper</a>
+      <a class="btn" href="https://arxiv.org/pdf/2601.06338">PDF</a>
+      <a class="btn" href="https://arxiv.org/abs/2601.06338">arXiv</a>
+      <a class="btn" href="https://github.com/Animadversio/DiT-Relation-Circuits">💻 Code</a>
+      <a class="btn alt" href="#bibtex">BibTeX</a>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+<section id="tldr">
+  <h2>TL;DR</h2>
+  <div class="tldr">
+    <p>Two DiTs trained on the same task can reach <b>the same accuracy via fundamentally different internal circuits</b>. Swapping the text encoder — random token embeddings (RTE) vs. pretrained T5 — re-routes how spatial relation information reaches image tokens.</p>
+    <p style="margin-top:10px"><b>RTE-DiT</b> learns a clean two-stage circuit: a <i>relation head</i> tags image positions via QK interactions, an <i>object head</i> renders shapes into the tagged regions. <b>T5-DiT</b> bypasses the relation token entirely — spatial layout is decoded from contextualized object-token embeddings (especially the second shape word). The T5 circuit collapses under small prompt perturbations; the RTE circuit does not.</p>
+  </div>
+</section>
+
+<section id="overview">
+  <h2>Overview</h2>
+  <p>Text-to-image diffusion models routinely fail to place objects in the correct spatial configuration — "a red cube to the <i>left of</i> a blue sphere" comes out swapped or merged. We ask <b>mechanistically</b>: when a Diffusion Transformer <i>does</i> get spatial relations right, how does it do it, and why does the same architecture fail under tiny prompt changes?</p>
+  <p>We train PixArt-style DiTs from scratch on a controlled two-object relational dataset, varying only the text encoder. Using a scalable <b>attention synopsis</b> method we identify the specific cross-attention heads that carry relational information, trace the circuit end-to-end, and verify each step with weight-space analysis, ablations, and causal embedding manipulations.</p>
+
+  <div class="figure">
+    <img src="https://arxiv.org/html/2601.06338v2/figs/Data_schematics-03.png" alt="Two-object relational dataset and DiT setup" />
+    <div class="caption"><b>Figure 1.</b> The controlled two-object setup: prompts of the form <span class="inline-code">[color1] [shape1] [relation] [color2] [shape2]</span> over 3 shapes, 2 colors, and 8 spatial relations. We train DiT-B (and smaller variants) from scratch with T5-XXL, random token embeddings (RTE), or RTE without positional encoding.</div>
+  </div>
+</section>
+
+<section id="findings">
+  <h2>Key Findings</h2>
+  <ul>
+    <li><b>Same accuracy, different circuits.</b> Both RTE-DiT and T5-DiT reach ~84% spatial-relation accuracy, but their internal information flow is incompatible.</li>
+    <li><b>Spatial relations are learned last.</b> Training dynamics show colors, then shapes, then attribute binding, then spatial relations — the relational structure is the slowest to converge.</li>
+    <li><b>RTE-DiT: a clean two-stage circuit.</b> A <i>spatial relation head</i> (e.g. L2H8) writes a positional tag into image tokens via QK interaction with relation features; an <i>object generation head</i> reads the tag and renders the shape.</li>
+    <li><b>T5-DiT: information fusion in text tokens.</b> Spatial information leaks out of the relation word and into the contextual embedding of the second shape token. The model effectively reads "where + what" from a single token.</li>
+    <li><b>Robustness diverges.</b> Inserting an innocuous filler word (e.g. "the") drops T5-DiT spatial accuracy from 81% → 50% while RTE-DiT holds at ~84%.</li>
+    <li><b>Vector arithmetic controls layout.</b> Linear edits to factorized T5 embeddings causally swap the generated spatial relation while preserving object identity — direct evidence the relation is encoded in a linear subspace of the contextual embedding.</li>
+  </ul>
+</section>
+
+<section id="method">
+  <h2>Attention Synopsis &amp; Circuit Discovery</h2>
+  <p>Cross-attention in a DiT produces millions of maps over training. Our <b>attention synopsis</b> aggregates these by token <i>category</i> (object words, relation word, color words, filler) and averages over diffusion timesteps, surfacing the small number of heads that consistently route relational information.</p>
+
+  <div class="figure">
+    <img src="https://arxiv.org/html/2601.06338v2/figs/Figure_attn_head_finder_Final.png" alt="Attention synopsis identifying candidate circuit heads" />
+    <div class="caption"><b>Figure 3.</b> Attention synopsis across all heads and layers. A handful of heads carry the bulk of relation- and object-specific signal; these become the candidates for circuit-level analysis.</div>
+  </div>
+
+  <h3>RTE-DiT: two-stage relation → object pipeline</h3>
+  <div class="figure">
+    <img src="https://arxiv.org/html/2601.06338v2/figs/Figure_RelationHead_Final.png" alt="Relation head in RTE-DiT" />
+    <div class="caption"><b>Figure 4.</b> The spatial relation head implements a QK circuit that aligns positional embeddings with relation semantics, producing a spatial gradient on image tokens.</div>
+  </div>
+  <div class="figure">
+    <img src="https://arxiv.org/html/2601.06338v2/figs/Figure_ObjectShapeHead_Final.png" alt="Object generation head in RTE-DiT" />
+    <div class="caption"><b>Figure 5.</b> The object generation head mediates between shape tokens and the tagged image regions, completing the two-stage circuit.</div>
+  </div>
+  <div class="figure">
+    <img src="https://arxiv.org/html/2601.06338v2/figs/Figure_Attn_location_circuit_diagram-02.png" alt="RTE-DiT circuit schematic" />
+    <div class="caption"><b>Figure 6.</b> End-to-end circuit schematic for RTE-DiT: positional tagging (relation head) → object placement (object head).</div>
+  </div>
+
+  <h3>T5-DiT: information fusion in object tokens</h3>
+  <div class="figure">
+    <img src="https://arxiv.org/html/2601.06338v2/figs/Figure_DiT_T5_wordvec_manipulation_Final.png" alt="T5-DiT vector arithmetic on contextual embeddings" />
+    <div class="caption"><b>Figure 7.</b> In T5-DiT, ablating the relation token leaves spatial accuracy largely intact — the information has already been fused into the contextual embedding of the second shape token. Linear arithmetic on factorized embeddings causally manipulates the generated spatial relation.</div>
+  </div>
+</section>
+
+<section id="takeaway">
+  <h2>Why this matters</h2>
+  <p>The same downstream task is solvable by qualitatively different mechanisms — and which mechanism a model converges to depends on the <b>representational substrate</b> of the text encoder, not the diffusion backbone. T5's rich contextual fusion is an efficient solution in-distribution but creates a brittle dependence on full-sequence context; RTE's tokens, lacking pretraining priors, force the DiT to construct an explicit, modular relation circuit that generalizes more robustly.</p>
+  <p>This is a concrete case study in <b>how pretrained encoders shape downstream circuits</b>, and a methodological template — attention synopsis plus targeted causal interventions — for dissecting compositional behavior in diffusion models.</p>
+</section>
+
+<section id="bibtex">
+  <h2>Citation</h2>
+<pre class="bibtex">@inproceedings{wang2026circuit,
+  title     = {Circuit Mechanisms for Spatial Relation Generation in Diffusion Transformers},
+  author    = {Wang, Binxu and Fan, Jingxuan and Pan, Xu},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year      = {2026}
+}</pre>
+</section>
+
+<section id="ack">
+  <h2>Acknowledgements</h2>
+  <p>We thank Martin Wattenberg, Yonatan Belinkov, and Thomas Fel for feedback, and participants of the NEMI Workshop and the Mechanistic Interpretability Workshop at NeurIPS 2025 for helpful discussion. This work was supported by the Kempner Research Fellowship and the Schwartz Fellowship, with compute from the Kempner Institute cluster.</p>
+</section>
+
+</main>
+
+<footer>
+  <div>Template adapted for academic project pages · <a href="https://github.com/Animadversio/DiT-Relation-Circuits">source on GitHub</a></div>
+</footer>
+
+</body>
+</html>
