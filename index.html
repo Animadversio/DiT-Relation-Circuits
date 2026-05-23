@@ -351,15 +351,6 @@
     <div class="caption"><b>Figure 3.</b> Attention synopsis across all heads and layers. A handful of heads carry the bulk of relation- and object-specific signal; these become the candidates for circuit-level analysis.</div>
   </div>
 
-  <h3>RTE-DiT: two-stage relation → object pipeline</h3>
-  <div class="figure">
-    <img src="https://arxiv.org/html/2601.06338v2/figs/Figure_RelationHead_Final.png" alt="Relation head in RTE-DiT" />
-    <div class="caption"><b>Figure 4.</b> The spatial relation head implements a QK circuit that aligns positional embeddings with relation semantics, producing a spatial gradient on image tokens.</div>
-  </div>
-  <div class="figure">
-    <img src="https://arxiv.org/html/2601.06338v2/figs/Figure_ObjectShapeHead_Final.png" alt="Object generation head in RTE-DiT" />
-    <div class="caption"><b>Figure 5.</b> The object generation head mediates between shape tokens and the tagged image regions, completing the two-stage circuit.</div>
-  </div>
   <div class="circuit-widget" id="circuit-widget" data-mode="rte" data-stage="0">
     <div class="circuit-header">
       <div class="circuit-mode-label"><b>Figure 6 (interactive).</b> Step through the circuit; toggle the encoder to compare.</div>
@@ -659,6 +650,21 @@
 
     <div class="caption" style="margin-top:14px;"><b>Figure 6.</b> End-to-end circuit comparison. <b>RTE-DiT</b> (default): a two-stage circuit where a relation head writes a positional tag via QK with position embeddings, and an object head reads that tag to render the correct shape. <b>T5-DiT</b>: contextual fusion collapses the same computation into a single fused token (here "circle"), which can drive the image directly — explaining why ablating the relation word has little effect, but inserting filler words breaks the layout.</div>
   </div>
+</section>
+
+<section id="circuits">
+  <h2>Relation Circuits in DiTs</h2>
+
+
+  <h3>RTE-DiT: two-stage relation → object pipeline</h3>
+  <div class="figure">
+    <img src="https://arxiv.org/html/2601.06338v2/figs/Figure_RelationHead_Final.png" alt="Relation head in RTE-DiT" />
+    <div class="caption"><b>Figure 4.</b> The spatial relation head implements a QK circuit that aligns positional embeddings with relation semantics, producing a spatial gradient on image tokens.</div>
+  </div>
+  <div class="figure">
+    <img src="https://arxiv.org/html/2601.06338v2/figs/Figure_ObjectShapeHead_Final.png" alt="Object generation head in RTE-DiT" />
+    <div class="caption"><b>Figure 5.</b> The object generation head mediates between shape tokens and the tagged image regions, completing the two-stage circuit.</div>
+  </div>
 
   <h3>T5-DiT: information fusion in object tokens</h3>
   <div class="figure">
@@ -754,7 +760,7 @@
       i += 1;
       if (i > stageCaps[mode]) { stop(); return; }
       setStage(i);
-    }, 1300);
+    }, 1950);
   }
 
   widget.querySelectorAll('.circuit-controls button').forEach(function (btn) {
