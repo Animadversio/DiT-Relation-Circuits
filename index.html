@@ -261,6 +261,36 @@
     font-family: "Google Sans", sans-serif; font-size: 10px;
     fill: var(--muted); font-style: italic; text-anchor: middle;
   }
+  /* Collapsible static-figure block */
+  .static-fig6 {
+    margin: 14px 0 8px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fbfcfd;
+    padding: 4px 14px;
+  }
+  .static-fig6 > summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 8px 4px;
+    font-size: 0.92rem;
+    color: var(--muted);
+    font-weight: 500;
+    user-select: none;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .static-fig6 > summary::-webkit-details-marker { display: none; }
+  .static-fig6 > summary::before {
+    content: "▸";
+    display: inline-block;
+    transition: transform 0.15s ease;
+    color: var(--accent);
+    font-size: 0.9em;
+  }
+  .static-fig6[open] > summary::before { transform: rotate(90deg); }
+  .static-fig6 > summary:hover { color: var(--fg); }
+  .static-fig6[open] > summary { color: var(--fg); border-bottom: 1px solid var(--border); margin-bottom: 8px; }
+  .static-fig6 .figure { margin: 8px 0 12px; }
   .circuit-controls {
     display: flex; align-items: center; gap: 8px;
     flex-wrap: wrap; margin-top: 14px;
@@ -655,7 +685,13 @@
     <div class="caption" style="margin-top:14px;"><b>Figure 6.</b> End-to-end circuit comparison. <b>RTE-DiT</b> (default): a two-stage circuit where a relation head writes a positional tag via QK with position embeddings, and an object head reads that tag to render the correct shape. <b>T5-DiT</b>: contextual fusion collapses the same computation into a single fused token (here "circle"), which can drive the image directly — explaining why ablating the relation word has little effect, but inserting filler words breaks the layout.</div>
   </div>
 
-
+  <details class="static-fig6">
+    <summary>Show the static Figure 6 from the paper</summary>
+    <div class="figure" style="margin-top:14px;">
+      <img src="https://arxiv.org/html/2601.06338v2/figs/Figure_Attn_location_circuit_diagram-02.png" alt="Original static Figure 6 from the paper" />
+      <div class="caption"><b>Figure 6 (original).</b> The static circuit schematic as it appears in the paper.</div>
+    </div>
+  </details>
 
   <h3>RTE-DiT: two-stage relation → object pipeline</h3>
   <div class="figure">
