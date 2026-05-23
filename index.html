@@ -384,13 +384,14 @@
       <text class="col-label" x="410" y="18">Cross-attention</text>
       <text class="col-label" x="700" y="18">Image tokens</text>
 
-      <!-- Shared tokens -->
+      <!-- Shared tokens (6 tokens: red, square, is, left of, blue, sphere) -->
       <g data-from-stage="1">
-        <g class="tok" transform="translate(20,32)"><rect width="160" height="32" rx="6"/><text x="80" y="18">"red"</text></g>
-        <g class="tok" transform="translate(20,72)"><rect width="160" height="32" rx="6"/><text x="80" y="18">"cube"</text></g>
-        <g class="tok tok-relation" transform="translate(20,112)"><title>Relation word — carries spatial information</title><rect width="160" height="32" rx="6"/><text x="80" y="18">"left of"</text></g>
-        <g class="tok" transform="translate(20,152)"><rect width="160" height="32" rx="6"/><text x="80" y="18">"blue"</text></g>
-        <g class="tok tok-shape2" transform="translate(20,192)"><title>Second shape — in T5, also encodes the relation</title><rect width="160" height="32" rx="6"/><text x="80" y="18">"sphere"</text></g>
+        <g class="tok" transform="translate(20,20)"><rect width="160" height="32" rx="6"/><text x="80" y="18">"red"</text></g>
+        <g class="tok" transform="translate(20,54)"><rect width="160" height="32" rx="6"/><text x="80" y="18">"square"</text></g>
+        <g class="tok" transform="translate(20,88)"><rect width="160" height="32" rx="6"/><text x="80" y="18">"is"</text></g>
+        <g class="tok tok-relation" transform="translate(20,122)"><title>Relation word — carries spatial information</title><rect width="160" height="32" rx="6"/><text x="80" y="18">"left of"</text></g>
+        <g class="tok" transform="translate(20,156)"><rect width="160" height="32" rx="6"/><text x="80" y="18">"blue"</text></g>
+        <g class="tok tok-shape2" transform="translate(20,190)"><title>Second shape — in T5, also encodes the relation</title><rect width="160" height="32" rx="6"/><text x="80" y="18">"sphere"</text></g>
       </g>
 
       <!-- Image grid base -->
@@ -445,7 +446,7 @@
         <!-- ============ Relation Head · QK (stage 2) ============ -->
         <!-- K: relation token → RH (text → head, left to right) -->
         <path class="arrow" data-from-stage="2" stroke="#1f6feb" marker-end="url(#ah-blue)"
-              d="M180,128 C250,128 280,84 333,84"/>
+              d="M180,138 C250,138 280,84 333,84"/>
         <text class="qkv-label" data-from-stage="2" data-until-stage="2" x="252" y="100" fill="#1f6feb">K</text>
         <text class="qkv-label" data-from-stage="3" x="248" y="100" fill="#1f6feb">K,V</text>
         <!-- Q: image grid → RH (image → head, right to left, dashed) -->
@@ -460,11 +461,11 @@
         <text class="qkv-label" data-from-stage="3" x="548" y="112" fill="#1f6feb">O</text>
 
         <!-- ============ Object Head · QK (stage 4) ============ -->
-        <!-- K: shape tokens → OH -->
+        <!-- K: shape tokens (square, sphere) → OH -->
         <path class="arrow" data-from-stage="4" stroke="#e0245e" marker-end="url(#ah-red)"
-              d="M180,88  C260,88  280,214 333,214"/>
+              d="M180,70  C260,70  280,214 333,214"/>
         <path class="arrow" data-from-stage="4" stroke="#e0245e" marker-end="url(#ah-red)"
-              d="M180,208 C260,208 280,214 333,214"/>
+              d="M180,206 C260,206 280,214 333,214"/>
         <text class="qkv-label" data-from-stage="4" data-until-stage="4" x="252" y="168" fill="#e0245e">K</text>
         <text class="qkv-label" data-from-stage="5" x="248" y="168" fill="#e0245e">K,V</text>
         <!-- Q: image grid → OH (image → head, right to left, dashed) -->
@@ -489,11 +490,11 @@
           <rect width="90" height="180" rx="6" fill="#7b2cbf" fill-opacity="0.32"/>
           <text class="qkv-label" x="45" y="-8" text-anchor="middle" fill="#7b2cbf">"becoming obj1" tag</text>
         </g>
-        <!-- Stage 4 only: OH-QK attention pattern — tagged → cube, untagged → sphere -->
+        <!-- Stage 4 only: OH-QK attention pattern — tagged → square, untagged → sphere -->
         <g data-from-stage="4" data-until-stage="4" transform="translate(610,55)">
           <rect x="0"  width="90"  height="180" fill="#e0245e" fill-opacity="0.16"/>
           <rect x="90" width="90"  height="180" fill="#1f6feb" fill-opacity="0.16"/>
-          <text class="qkv-label" x="45"  y="172" text-anchor="middle" fill="#e0245e">attn → cube</text>
+          <text class="qkv-label" x="45"  y="172" text-anchor="middle" fill="#e0245e">attn → square</text>
           <text class="qkv-label" x="135" y="172" text-anchor="middle" fill="#1f6feb">attn → sphere</text>
         </g>
         <!-- Stage 5+: final rendered visual features -->
@@ -507,15 +508,16 @@
       <g class="mode-t5">
         <!-- fusion: dashed arcs from each non-shape2 token curving into shape2 -->
         <g data-from-stage="2">
-          <path class="fuse" marker-end="url(#ah-purple)" d="M180,48  C320,48  320,208 184,208"/>
-          <path class="fuse" marker-end="url(#ah-purple)" d="M180,88  C310,88  310,208 184,208"/>
-          <path class="fuse" marker-end="url(#ah-purple)" d="M180,128 C300,128 300,208 184,208"/>
-          <path class="fuse" marker-end="url(#ah-purple)" d="M180,168 C290,168 290,208 184,208"/>
+          <path class="fuse" marker-end="url(#ah-purple)" d="M180,36  C320,36  320,206 184,206"/>
+          <path class="fuse" marker-end="url(#ah-purple)" d="M180,70  C310,70  310,206 184,206"/>
+          <path class="fuse" marker-end="url(#ah-purple)" d="M180,104 C300,104 300,206 184,206"/>
+          <path class="fuse" marker-end="url(#ah-purple)" d="M180,138 C290,138 290,206 184,206"/>
+          <path class="fuse" marker-end="url(#ah-purple)" d="M180,172 C280,172 280,206 184,206"/>
         </g>
         <g class="annot" data-from-stage="2"><text x="240" y="265">context fuses into the "sphere" token</text></g>
         <!-- direct arrow: shape2 → image -->
         <path class="arrow" data-from-stage="3" stroke="#7b2cbf" marker-end="url(#ah-purple)"
-              d="M180,208 C380,208 420,145 608,145"/>
+              d="M180,206 C380,206 420,145 608,145"/>
         <!-- final shapes -->
         <g data-from-stage="3" transform="translate(610,55)">
           <rect x="28" y="70" width="40" height="40" rx="4" fill="#e0245e"/>
@@ -580,8 +582,8 @@
       'Text tokens enter cross-attention; image tokens carry positional embeddings.',
       '<b>Relation Head · QK</b>: <b>Q</b> from image (positional) + <b>K</b> from <i>"left of"</i> → position-dependent attention scores (blue gradient on the image grid).',
       '<b>Relation Head · VO</b>: <b>V</b> from text, <b>O</b> written into image tokens → a <span style="color:#7b2cbf;font-weight:600">"becoming obj1" tag</span> (purple) attached to the targeted positions.',
-      '<b>Object Head · QK</b>: <b>Q</b> from image + <b>K</b> from shape tokens — tokens with the <i>obj1 tag</i> attend to "cube"; untagged tokens attend to "sphere".',
-      '<b>Object Head · VO</b>: <b>V</b> from text, <b>O</b> written → the actual visual features of cube and sphere render in their positions.'
+      '<b>Object Head · QK</b>: <b>Q</b> from image + <b>K</b> from shape tokens — tokens with the <i>obj1 tag</i> attend to "square"; untagged tokens attend to "sphere".',
+      '<b>Object Head · VO</b>: <b>V</b> from text, <b>O</b> written → the actual visual features of square and sphere render in their positions.'
     ],
     t5: [
       'Click <b>Play</b> to trace the T5-DiT circuit.',
