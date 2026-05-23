@@ -401,182 +401,187 @@
       <div class="circuit-mode-label"><b>Figure 3a (interactive). Attention-Map Synopsis.</b></div>
     </div>
 
-    <svg class="circuit-svg" viewBox="0 0 820 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Figure 3a (interactive). Attention-Map Synopsis.">
+    <svg class="circuit-svg" viewBox="0 0 820 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Figure 3a (interactive). Attention-Map Synopsis.">
       <defs>
-        <marker id="ah-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#ff8a3d"/></marker>
+        <marker id="ah-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b6470"/></marker>
         <marker id="ah-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0d9488"/></marker>
+        <marker id="ah-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#ff8a3d"/></marker>
+        <marker id="ah-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1f6feb"/></marker>
       </defs>
-        <text class="col-label" x="93" y="18">attention map (image pos × tokens)</text>
-        <text class="col-label" x="305" y="18">average by category</text>
-        <text class="col-label" x="660" y="18">synopsis grid (layer × head)</text>
-        <g data-from-stage="1" data-until-stage="1" transform="translate(28,30)">
-        <rect class="heat-cell" x="0" y="0" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.20"/>
-        <rect class="heat-cell" x="22" y="0" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.40"/>
-        <rect class="heat-cell" x="44" y="0" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.10"/>
-        <rect class="heat-cell" x="66" y="0" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.80"/>
-        <rect class="heat-cell" x="88" y="0" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.20"/>
-        <rect class="heat-cell" x="110" y="0" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.30"/>
-        <rect class="heat-cell" x="0" y="18" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.30"/>
-        <rect class="heat-cell" x="22" y="18" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.50"/>
-        <rect class="heat-cell" x="44" y="18" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.10"/>
-        <rect class="heat-cell" x="66" y="18" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.70"/>
-        <rect class="heat-cell" x="88" y="18" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.20"/>
-        <rect class="heat-cell" x="110" y="18" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.40"/>
-        <rect class="heat-cell" x="0" y="36" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.40"/>
-        <rect class="heat-cell" x="22" y="36" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.50"/>
-        <rect class="heat-cell" x="44" y="36" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.20"/>
-        <rect class="heat-cell" x="66" y="36" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.60"/>
-        <rect class="heat-cell" x="88" y="36" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.30"/>
-        <rect class="heat-cell" x="110" y="36" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.40"/>
-        <rect class="heat-cell" x="0" y="54" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.40"/>
-        <rect class="heat-cell" x="22" y="54" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.40"/>
-        <rect class="heat-cell" x="44" y="54" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.20"/>
-        <rect class="heat-cell" x="66" y="54" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.40"/>
-        <rect class="heat-cell" x="88" y="54" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.40"/>
-        <rect class="heat-cell" x="110" y="54" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.50"/>
-        <rect class="heat-cell" x="0" y="72" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.30"/>
-        <rect class="heat-cell" x="22" y="72" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.40"/>
-        <rect class="heat-cell" x="44" y="72" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.10"/>
-        <rect class="heat-cell" x="66" y="72" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.30"/>
-        <rect class="heat-cell" x="88" y="72" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.40"/>
-        <rect class="heat-cell" x="110" y="72" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.50"/>
-        <rect class="heat-cell" x="0" y="90" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.30"/>
-        <rect class="heat-cell" x="22" y="90" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.30"/>
-        <rect class="heat-cell" x="44" y="90" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.10"/>
-        <rect class="heat-cell" x="66" y="90" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.20"/>
-        <rect class="heat-cell" x="88" y="90" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.50"/>
-        <rect class="heat-cell" x="110" y="90" width="20" height="16" rx="2" fill="#5b6470" fill-opacity="0.60"/>
-        </g>
-        <g data-from-stage="2" transform="translate(28,30)">
-        <rect class="heat-cell" x="0" y="0" width="20" height="16" rx="2" fill="#ec4899" fill-opacity="0.20"/>
-        <rect class="heat-cell" x="22" y="0" width="20" height="16" rx="2" fill="#10b981" fill-opacity="0.40"/>
+        <text class="col-label" x="110" y="14">attention map</text>
+        <text class="col-label" x="110" y="28">(image pos × tokens)</text>
+        <text class="col-label" x="330" y="14">average by</text>
+        <text class="col-label" x="330" y="28">(obj1 region) × (token)</text>
+        <text class="col-label" x="660" y="14">synopsis grid</text>
+        <text class="col-label" x="660" y="28">(layer × head)</text>
+        <g data-from-stage="1" transform="translate(60,55)">
+        <rect class="heat-cell" x="0" y="0" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.50"/>
+        <rect class="heat-cell" x="22" y="0" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.70"/>
         <rect class="heat-cell" x="44" y="0" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.10"/>
-        <rect class="heat-cell" x="66" y="0" width="20" height="16" rx="2" fill="#ff8a3d" fill-opacity="0.80"/>
-        <rect class="heat-cell" x="88" y="0" width="20" height="16" rx="2" fill="#ec4899" fill-opacity="0.20"/>
-        <rect class="heat-cell" x="110" y="0" width="20" height="16" rx="2" fill="#10b981" fill-opacity="0.30"/>
-        <rect class="heat-cell" x="0" y="18" width="20" height="16" rx="2" fill="#ec4899" fill-opacity="0.30"/>
-        <rect class="heat-cell" x="22" y="18" width="20" height="16" rx="2" fill="#10b981" fill-opacity="0.50"/>
+        <rect class="heat-cell" x="66" y="0" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.80"/>
+        <rect class="heat-cell" x="88" y="0" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.10"/>
+        <rect class="heat-cell" x="110" y="0" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.20"/>
+        <rect class="heat-cell" x="0" y="18" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.40"/>
+        <rect class="heat-cell" x="22" y="18" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.60"/>
         <rect class="heat-cell" x="44" y="18" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.10"/>
-        <rect class="heat-cell" x="66" y="18" width="20" height="16" rx="2" fill="#ff8a3d" fill-opacity="0.70"/>
-        <rect class="heat-cell" x="88" y="18" width="20" height="16" rx="2" fill="#ec4899" fill-opacity="0.20"/>
-        <rect class="heat-cell" x="110" y="18" width="20" height="16" rx="2" fill="#10b981" fill-opacity="0.40"/>
-        <rect class="heat-cell" x="0" y="36" width="20" height="16" rx="2" fill="#ec4899" fill-opacity="0.40"/>
-        <rect class="heat-cell" x="22" y="36" width="20" height="16" rx="2" fill="#10b981" fill-opacity="0.50"/>
+        <rect class="heat-cell" x="66" y="18" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.70"/>
+        <rect class="heat-cell" x="88" y="18" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.10"/>
+        <rect class="heat-cell" x="110" y="18" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.20"/>
+        <rect class="heat-cell" x="0" y="36" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.20"/>
+        <rect class="heat-cell" x="22" y="36" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.30"/>
         <rect class="heat-cell" x="44" y="36" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.20"/>
-        <rect class="heat-cell" x="66" y="36" width="20" height="16" rx="2" fill="#ff8a3d" fill-opacity="0.60"/>
-        <rect class="heat-cell" x="88" y="36" width="20" height="16" rx="2" fill="#ec4899" fill-opacity="0.30"/>
-        <rect class="heat-cell" x="110" y="36" width="20" height="16" rx="2" fill="#10b981" fill-opacity="0.40"/>
-        <rect class="heat-cell" x="0" y="54" width="20" height="16" rx="2" fill="#ec4899" fill-opacity="0.40"/>
-        <rect class="heat-cell" x="22" y="54" width="20" height="16" rx="2" fill="#10b981" fill-opacity="0.40"/>
-        <rect class="heat-cell" x="44" y="54" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.20"/>
-        <rect class="heat-cell" x="66" y="54" width="20" height="16" rx="2" fill="#ff8a3d" fill-opacity="0.40"/>
-        <rect class="heat-cell" x="88" y="54" width="20" height="16" rx="2" fill="#ec4899" fill-opacity="0.40"/>
-        <rect class="heat-cell" x="110" y="54" width="20" height="16" rx="2" fill="#10b981" fill-opacity="0.50"/>
-        <rect class="heat-cell" x="0" y="72" width="20" height="16" rx="2" fill="#ec4899" fill-opacity="0.30"/>
-        <rect class="heat-cell" x="22" y="72" width="20" height="16" rx="2" fill="#10b981" fill-opacity="0.40"/>
+        <rect class="heat-cell" x="66" y="36" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.40"/>
+        <rect class="heat-cell" x="88" y="36" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.20"/>
+        <rect class="heat-cell" x="110" y="36" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.30"/>
+        <rect class="heat-cell" x="0" y="54" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.20"/>
+        <rect class="heat-cell" x="22" y="54" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.20"/>
+        <rect class="heat-cell" x="44" y="54" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.10"/>
+        <rect class="heat-cell" x="66" y="54" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.30"/>
+        <rect class="heat-cell" x="88" y="54" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.30"/>
+        <rect class="heat-cell" x="110" y="54" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.30"/>
+        <rect class="heat-cell" x="0" y="72" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.10"/>
+        <rect class="heat-cell" x="22" y="72" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.20"/>
         <rect class="heat-cell" x="44" y="72" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.10"/>
-        <rect class="heat-cell" x="66" y="72" width="20" height="16" rx="2" fill="#ff8a3d" fill-opacity="0.30"/>
-        <rect class="heat-cell" x="88" y="72" width="20" height="16" rx="2" fill="#ec4899" fill-opacity="0.40"/>
-        <rect class="heat-cell" x="110" y="72" width="20" height="16" rx="2" fill="#10b981" fill-opacity="0.50"/>
-        <rect class="heat-cell" x="0" y="90" width="20" height="16" rx="2" fill="#ec4899" fill-opacity="0.30"/>
-        <rect class="heat-cell" x="22" y="90" width="20" height="16" rx="2" fill="#10b981" fill-opacity="0.30"/>
+        <rect class="heat-cell" x="66" y="72" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.20"/>
+        <rect class="heat-cell" x="88" y="72" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.50"/>
+        <rect class="heat-cell" x="110" y="72" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.70"/>
+        <rect class="heat-cell" x="0" y="90" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.10"/>
+        <rect class="heat-cell" x="22" y="90" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.20"/>
         <rect class="heat-cell" x="44" y="90" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.10"/>
-        <rect class="heat-cell" x="66" y="90" width="20" height="16" rx="2" fill="#ff8a3d" fill-opacity="0.20"/>
-        <rect class="heat-cell" x="88" y="90" width="20" height="16" rx="2" fill="#ec4899" fill-opacity="0.50"/>
-        <rect class="heat-cell" x="110" y="90" width="20" height="16" rx="2" fill="#10b981" fill-opacity="0.60"/>
+        <rect class="heat-cell" x="66" y="90" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.10"/>
+        <rect class="heat-cell" x="88" y="90" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.60"/>
+        <rect class="heat-cell" x="110" y="90" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.70"/>
+        <text class="axis-label-side" x="-6" y="8" fill="#1a1a1a" font-weight="600">obj1</text>
+        <text class="axis-label-side" x="-6" y="26" fill="#94a3b8" font-size="8">"</text>
+        <text class="axis-label-side" x="-6" y="44" fill="#1a1a1a" font-weight="600">bg</text>
+        <text class="axis-label-side" x="-6" y="62" fill="#94a3b8" font-size="8">"</text>
+        <text class="axis-label-side" x="-6" y="80" fill="#1a1a1a" font-weight="600">obj2</text>
+        <text class="axis-label-side" x="-6" y="98" fill="#94a3b8" font-size="8">"</text>
+        <text class="axis-label" transform="rotate(-30 10 122)" x="10" y="122">red</text>
+        <text class="axis-label" transform="rotate(-30 32 122)" x="32" y="122">square</text>
+        <text class="axis-label" transform="rotate(-30 54 122)" x="54" y="122">is</text>
+        <text class="axis-label" transform="rotate(-30 76 122)" x="76" y="122">left of</text>
+        <text class="axis-label" transform="rotate(-30 98 122)" x="98" y="122">blue</text>
+        <text class="axis-label" transform="rotate(-30 120 122)" x="120" y="122">circle</text>
         </g>
-        <g data-from-stage="1" transform="translate(28,30)">
-        <text class="axis-label" transform="rotate(-30 10.0 124)" x="10.0" y="124">red</text>
-        <text class="axis-label" transform="rotate(-30 32.0 124)" x="32.0" y="124">square</text>
-        <text class="axis-label" transform="rotate(-30 54.0 124)" x="54.0" y="124">is</text>
-        <text class="axis-label" transform="rotate(-30 76.0 124)" x="76.0" y="124">left of</text>
-        <text class="axis-label" transform="rotate(-30 98.0 124)" x="98.0" y="124">blue</text>
-        <text class="axis-label" transform="rotate(-30 120.0 124)" x="120.0" y="124">circle</text>
+        <g data-from-stage="2" transform="translate(60,55)">
+        <rect x="0" y="0" width="20" height="16" rx="2" fill="#ec4899" fill-opacity="0.73" stroke="#ec4899" stroke-width="1.2"/>
+        <rect x="22" y="0" width="20" height="16" rx="2" fill="#10b981" fill-opacity="0.80" stroke="#10b981" stroke-width="1.2"/>
+        <rect x="66" y="0" width="20" height="16" rx="2" fill="#ff8a3d" fill-opacity="0.83" stroke="#ff8a3d" stroke-width="1.2"/>
+        <rect x="0" y="18" width="20" height="16" rx="2" fill="#ec4899" fill-opacity="0.69" stroke="#ec4899" stroke-width="1.2"/>
+        <rect x="22" y="18" width="20" height="16" rx="2" fill="#10b981" fill-opacity="0.76" stroke="#10b981" stroke-width="1.2"/>
+        <rect x="66" y="18" width="20" height="16" rx="2" fill="#ff8a3d" fill-opacity="0.80" stroke="#ff8a3d" stroke-width="1.2"/>
         </g>
-        <g data-from-stage="3" transform="translate(228,36)">
-        <text class="cat-bar-label" x="-4" y="8.0" text-anchor="end" fill="#ec4899">color</text>
-        <rect x="0" y="0" width="42.2" height="16" rx="3" fill="#ec4899" fill-opacity="0.85"/>
-        <rect x="0" y="0" width="130" height="16" rx="3" fill="none" stroke="#d4dae2" stroke-width="0.5"/>
-        <text class="axis-label" x="47.2" y="11.0" text-anchor="start">0.32</text>
-        <text class="cat-bar-label" x="-4" y="32.0" text-anchor="end" fill="#10b981">shape</text>
-        <rect x="0" y="24" width="56.3" height="16" rx="3" fill="#10b981" fill-opacity="0.85"/>
-        <rect x="0" y="24" width="130" height="16" rx="3" fill="none" stroke="#d4dae2" stroke-width="0.5"/>
-        <text class="axis-label" x="61.3" y="35.0" text-anchor="start">0.43</text>
-        <text class="cat-bar-label" x="-4" y="56.0" text-anchor="end" fill="#ff8a3d">rel</text>
-        <rect x="0" y="48" width="65.0" height="16" rx="3" fill="#ff8a3d" fill-opacity="0.85"/>
-        <rect x="0" y="48" width="130" height="16" rx="3" fill="none" stroke="#d4dae2" stroke-width="0.5"/>
-        <text class="axis-label" x="70.0" y="59.0" text-anchor="start">0.50</text>
-        <text class="cat-bar-label" x="-4" y="80.0" text-anchor="end" fill="#94a3b8">fill</text>
-        <rect x="0" y="72" width="17.3" height="16" rx="3" fill="#94a3b8" fill-opacity="0.85"/>
-        <rect x="0" y="72" width="130" height="16" rx="3" fill="none" stroke="#d4dae2" stroke-width="0.5"/>
-        <text class="axis-label" x="22.3" y="83.0" text-anchor="start">0.13</text>
+        <g data-from-stage="3" transform="translate(245,55)">
+        <text class="axis-label" x="0" y="9" text-anchor="start" fill="#ec4899" font-weight="600">obj1 → color1 [red]</text>
+        <rect x="0" y="12" width="110" height="12" rx="2" fill="none" stroke="#d4dae2" stroke-width="0.5"/>
+        <rect x="0" y="12" width="49.5" height="12" rx="2" fill="#ec4899" fill-opacity="0.85"/>
+        <text class="axis-label" x="54.5" y="21" text-anchor="start">0.45</text>
+        <text class="axis-label" x="0" y="37" text-anchor="start" fill="#10b981" font-weight="600">obj1 → shape1 [square]</text>
+        <rect x="0" y="40" width="110" height="12" rx="2" fill="none" stroke="#d4dae2" stroke-width="0.5"/>
+        <rect x="0" y="40" width="71.5" height="12" rx="2" fill="#10b981" fill-opacity="0.85"/>
+        <text class="axis-label" x="76.5" y="49" text-anchor="start">0.65</text>
+        <text class="axis-label" x="0" y="65" text-anchor="start" fill="#ff8a3d" font-weight="600">obj1 → rel [left of]</text>
+        <rect x="0" y="68" width="110" height="12" rx="2" fill="none" stroke="#d4dae2" stroke-width="0.5"/>
+        <rect x="0" y="68" width="82.5" height="12" rx="2" fill="#ff8a3d" fill-opacity="0.85"/>
+        <text class="axis-label" x="87.5" y="77" text-anchor="start">0.75</text>
         </g>
-        <g data-from-stage="1" transform="translate(540,38)">
-        <text class="axis-label-side" x="-6" y="10.0">L0</text>
-        <text class="axis-label-side" x="-6" y="34.0">L1</text>
-        <text class="axis-label-side" x="-6" y="58.0">L2</text>
-        <text class="axis-label-side" x="-6" y="82.0">L3</text>
-        <text class="axis-label" x="18.0" y="-6">H0</text>
-        <text class="axis-label" x="58.0" y="-6">H1</text>
-        <text class="axis-label" x="98.0" y="-6">H2</text>
-        <text class="axis-label" x="138.0" y="-6">H3</text>
-        <text class="axis-label" x="178.0" y="-6">H4</text>
-        <text class="axis-label" x="218.0" y="-6">H5</text>
-        <rect class="synopsis-cell" x="0" y="0" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="40" y="0" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="80" y="0" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="120" y="0" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="160" y="0" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="200" y="0" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="0" y="24" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="40" y="24" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="80" y="24" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="120" y="24" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="160" y="24" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="200" y="24" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="0" y="48" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="40" y="48" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="80" y="48" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="120" y="48" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="160" y="48" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="200" y="48" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="0" y="72" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="40" y="72" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="80" y="72" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="120" y="72" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="160" y="72" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="200" y="72" width="36" height="20" rx="3"/>
+        <g data-from-stage="4">
+        <path d="M395,100 C440,100 470,100 540,100" stroke="#5b6470" stroke-width="2" fill="none" marker-end="url(#ah-gray)"/>
+        <text class="axis-label" x="467" y="94" text-anchor="middle">aggregate</text>
         </g>
-        <g data-from-stage="4" transform="translate(540,38)">
-        <rect x="0" y="0" width="36" height="20" rx="3" fill="#94a3b8" fill-opacity="0.55"/>
-        <rect x="40" y="0" width="36" height="20" rx="3" fill="#ec4899" fill-opacity="0.85"/>
-        <rect x="80" y="0" width="36" height="20" rx="3" fill="#94a3b8" fill-opacity="0.55"/>
-        <rect x="120" y="0" width="36" height="20" rx="3" fill="#94a3b8" fill-opacity="0.55"/>
-        <rect x="160" y="0" width="36" height="20" rx="3" fill="#10b981" fill-opacity="0.85"/>
-        <rect x="200" y="0" width="36" height="20" rx="3" fill="#94a3b8" fill-opacity="0.55"/>
-        <rect x="0" y="24" width="36" height="20" rx="3" fill="#ec4899" fill-opacity="0.85"/>
-        <rect x="40" y="24" width="36" height="20" rx="3" fill="#94a3b8" fill-opacity="0.55"/>
-        <rect x="80" y="24" width="36" height="20" rx="3" fill="#94a3b8" fill-opacity="0.55"/>
-        <rect x="120" y="24" width="36" height="20" rx="3" fill="#94a3b8" fill-opacity="0.55"/>
-        <rect x="160" y="24" width="36" height="20" rx="3" fill="#94a3b8" fill-opacity="0.55"/>
-        <rect x="200" y="24" width="36" height="20" rx="3" fill="#ff8a3d" fill-opacity="0.85"/>
-        <rect x="0" y="48" width="36" height="20" rx="3" fill="#94a3b8" fill-opacity="0.55"/>
-        <rect x="40" y="48" width="36" height="20" rx="3" fill="#94a3b8" fill-opacity="0.55"/>
-        <rect x="80" y="48" width="36" height="20" rx="3" fill="#94a3b8" fill-opacity="0.55"/>
-        <rect x="120" y="48" width="36" height="20" rx="3" fill="#ff8a3d" fill-opacity="0.85"/>
-        <rect x="160" y="48" width="36" height="20" rx="3" fill="#10b981" fill-opacity="0.85"/>
-        <rect x="200" y="48" width="36" height="20" rx="3" fill="#94a3b8" fill-opacity="0.55"/>
-        <rect x="0" y="72" width="36" height="20" rx="3" fill="#10b981" fill-opacity="0.85"/>
-        <rect x="40" y="72" width="36" height="20" rx="3" fill="#94a3b8" fill-opacity="0.55"/>
-        <rect x="80" y="72" width="36" height="20" rx="3" fill="#94a3b8" fill-opacity="0.55"/>
-        <rect x="120" y="72" width="36" height="20" rx="3" fill="#ec4899" fill-opacity="0.85"/>
-        <rect x="160" y="72" width="36" height="20" rx="3" fill="#94a3b8" fill-opacity="0.55"/>
-        <rect x="200" y="72" width="36" height="20" rx="3" fill="#94a3b8" fill-opacity="0.55"/>
+        <g data-from-stage="1" transform="translate(560,55)">
+        <text class="axis-label-side" x="-6" y="11.0">L0</text>
+        <text class="axis-label-side" x="-6" y="36.0">L1</text>
+        <text class="axis-label-side" x="-6" y="61.0">L2</text>
+        <text class="axis-label-side" x="-6" y="86.0">L3</text>
+        <text class="axis-label-side" x="-6" y="111.0">L4</text>
+        <text class="axis-label-side" x="-6" y="136.0">L5</text>
+        <text class="axis-label" x="11.0" y="-6">H0</text>
+        <text class="axis-label" x="36.0" y="-6">H1</text>
+        <text class="axis-label" x="61.0" y="-6">H2</text>
+        <text class="axis-label" x="86.0" y="-6">H3</text>
+        <text class="axis-label" x="111.0" y="-6">H4</text>
+        <text class="axis-label" x="136.0" y="-6">H5</text>
+        <rect class="synopsis-cell" x="0" y="0" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="25" y="0" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="50" y="0" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="75" y="0" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="100" y="0" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="125" y="0" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="0" y="25" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="25" y="25" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="50" y="25" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="75" y="25" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="100" y="25" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="125" y="25" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="0" y="50" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="25" y="50" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="50" y="50" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="75" y="50" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="100" y="50" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="125" y="50" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="0" y="75" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="25" y="75" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="50" y="75" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="75" y="75" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="100" y="75" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="125" y="75" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="0" y="100" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="25" y="100" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="50" y="100" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="75" y="100" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="100" y="100" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="125" y="100" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="0" y="125" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="25" y="125" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="50" y="125" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="75" y="125" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="100" y="125" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="125" y="125" width="22" height="22" rx="3"/>
         </g>
-        <g data-from-stage="5" transform="translate(540,38)">
-        <rect x="120" y="48" width="36" height="20" rx="3" fill="none" stroke="#1a1a1a" stroke-width="2"/>
-        <rect x="160" y="48" width="36" height="20" rx="3" fill="none" stroke="#1a1a1a" stroke-width="2"/>
-        <rect x="200" y="24" width="36" height="20" rx="3" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+        <g data-from-stage="4" transform="translate(560,55)">
+        <rect x="0" y="0" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+        <rect x="25" y="0" width="22" height="22" rx="3" fill="#ec4899" fill-opacity="0.85"/>
+        <rect x="50" y="0" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+        <rect x="75" y="0" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+        <rect x="100" y="0" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+        <rect x="125" y="0" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+        <rect x="0" y="25" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+        <rect x="25" y="25" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+        <rect x="50" y="25" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+        <rect x="75" y="25" width="22" height="22" rx="3" fill="#ec4899" fill-opacity="0.85"/>
+        <rect x="100" y="25" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+        <rect x="125" y="25" width="22" height="22" rx="3" fill="#10b981" fill-opacity="0.85"/>
+        <rect x="0" y="50" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+        <rect x="25" y="50" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+        <rect x="50" y="50" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.85"/>
+        <rect x="75" y="50" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+        <rect x="100" y="50" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+        <rect x="125" y="50" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+        <rect x="0" y="75" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+        <rect x="25" y="75" width="22" height="22" rx="3" fill="#10b981" fill-opacity="0.85"/>
+        <rect x="50" y="75" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+        <rect x="75" y="75" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+        <rect x="100" y="75" width="22" height="22" rx="3" fill="#ec4899" fill-opacity="0.85"/>
+        <rect x="125" y="75" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+        <rect x="0" y="100" width="22" height="22" rx="3" fill="#ec4899" fill-opacity="0.85"/>
+        <rect x="25" y="100" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+        <rect x="50" y="100" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+        <rect x="75" y="100" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+        <rect x="100" y="100" width="22" height="22" rx="3" fill="#10b981" fill-opacity="0.85"/>
+        <rect x="125" y="100" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+        <rect x="0" y="125" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+        <rect x="25" y="125" width="22" height="22" rx="3" fill="#ec4899" fill-opacity="0.85"/>
+        <rect x="50" y="125" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+        <rect x="75" y="125" width="22" height="22" rx="3" fill="#10b981" fill-opacity="0.85"/>
+        <rect x="100" y="125" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+        <rect x="125" y="125" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.45"/>
+        </g>
+        <g data-from-stage="5" transform="translate(560,55)">
+        <rect x="25" y="75" width="22" height="22" rx="3" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+        <rect x="100" y="100" width="22" height="22" rx="3" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+        <rect x="50" y="50" width="22" height="22" rx="3" fill="none" stroke="#1a1a1a" stroke-width="2"/>
         </g>
     </svg>
 
@@ -595,93 +600,124 @@
       <div class="circuit-mode-label"><b>Figure 3b (interactive). Weight-Space Head Screening.</b></div>
     </div>
 
-    <svg class="circuit-svg" viewBox="0 0 820 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Figure 3b (interactive). Weight-Space Head Screening.">
+    <svg class="circuit-svg" viewBox="0 0 820 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Figure 3b (interactive). Weight-Space Head Screening.">
       <defs>
-        <marker id="ah-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#ff8a3d"/></marker>
+        <marker id="ah-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b6470"/></marker>
         <marker id="ah-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0d9488"/></marker>
+        <marker id="ah-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#ff8a3d"/></marker>
+        <marker id="ah-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1f6feb"/></marker>
       </defs>
-        <text class="col-label" x="120" y="18">weight matrices</text>
-        <text class="col-label" x="340" y="18">QK interaction</text>
-        <text class="col-label" x="660" y="18">synopsis grid (layer × head)</text>
-        <g data-from-stage="1"><g transform="translate(40,35)"><rect class="heat-cell" x="0" y="0" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.20"/><rect class="heat-cell" x="18" y="0" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.50"/><rect class="heat-cell" x="36" y="0" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.80"/><rect class="heat-cell" x="54" y="0" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.30"/><rect class="heat-cell" x="0" y="18" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.60"/><rect class="heat-cell" x="18" y="18" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.70"/><rect class="heat-cell" x="36" y="18" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.40"/><rect class="heat-cell" x="54" y="18" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.10"/><rect class="heat-cell" x="0" y="36" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.50"/><rect class="heat-cell" x="18" y="36" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.90"/><rect class="heat-cell" x="36" y="36" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.20"/><rect class="heat-cell" x="54" y="36" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.60"/><rect class="heat-cell" x="0" y="54" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.30"/><rect class="heat-cell" x="18" y="54" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.70"/><rect class="heat-cell" x="36" y="54" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.40"/><rect class="heat-cell" x="54" y="54" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.20"/><text class="formula" x="36" y="96">W_Q</text></g><g transform="translate(135,35)"><rect class="heat-cell" x="0" y="0" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.60"/><rect class="heat-cell" x="18" y="0" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.30"/><rect class="heat-cell" x="36" y="0" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.70"/><rect class="heat-cell" x="54" y="0" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.50"/><rect class="heat-cell" x="0" y="18" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.20"/><rect class="heat-cell" x="18" y="18" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.80"/><rect class="heat-cell" x="36" y="18" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.40"/><rect class="heat-cell" x="54" y="18" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.30"/><rect class="heat-cell" x="0" y="36" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.60"/><rect class="heat-cell" x="18" y="36" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.40"/><rect class="heat-cell" x="36" y="36" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.80"/><rect class="heat-cell" x="54" y="36" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.20"/><rect class="heat-cell" x="0" y="54" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.50"/><rect class="heat-cell" x="18" y="54" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.70"/><rect class="heat-cell" x="36" y="54" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.30"/><rect class="heat-cell" x="54" y="54" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.60"/><text class="formula" x="36" y="96">W_K</text></g></g>
-        <text class="formula" data-from-stage="1" x="125" y="68">·</text>
-        <g data-from-stage="2"><g transform="translate(265,35)"><rect class="heat-cell" x="0" y="0" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.90"/><rect class="heat-cell" x="18" y="0" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.70"/><rect class="heat-cell" x="36" y="0" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.20"/><rect class="heat-cell" x="54" y="0" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.10"/><rect class="heat-cell" x="0" y="18" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.60"/><rect class="heat-cell" x="18" y="18" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.80"/><rect class="heat-cell" x="36" y="18" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.30"/><rect class="heat-cell" x="54" y="18" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.20"/><rect class="heat-cell" x="0" y="36" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.20"/><rect class="heat-cell" x="18" y="36" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.30"/><rect class="heat-cell" x="36" y="36" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.50"/><rect class="heat-cell" x="54" y="36" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.40"/><rect class="heat-cell" x="0" y="54" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.10"/><rect class="heat-cell" x="18" y="54" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.20"/><rect class="heat-cell" x="36" y="54" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.40"/><rect class="heat-cell" x="54" y="54" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.60"/><text class="formula" x="36" y="96">W_Q^T W_K</text></g></g>
-        <g data-from-stage="3" transform="translate(258,140)">
-        <text class="formula" x="46" y="14" fill="#1f6feb">E_pos</text>
-        <text class="formula" x="46" y="32" fill="#ff8a3d">v_rel</text>
+        <text class="col-label" x="120" y="14">weight matrices</text>
+        <text class="col-label" x="120" y="28">(W_Q · W_K)</text>
+        <text class="col-label" x="330" y="14">QK interaction</text>
+        <text class="col-label" x="330" y="28">probed with E_pos · v_rel</text>
+        <text class="col-label" x="660" y="14">synopsis grid</text>
+        <text class="col-label" x="660" y="28">(layer × head)</text>
+        <g data-from-stage="1"><g transform="translate(40,55)"><rect class="heat-cell" x="0" y="0" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.20"/><rect class="heat-cell" x="18" y="0" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.50"/><rect class="heat-cell" x="36" y="0" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.80"/><rect class="heat-cell" x="54" y="0" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.30"/><rect class="heat-cell" x="0" y="18" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.60"/><rect class="heat-cell" x="18" y="18" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.70"/><rect class="heat-cell" x="36" y="18" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.40"/><rect class="heat-cell" x="54" y="18" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.10"/><rect class="heat-cell" x="0" y="36" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.50"/><rect class="heat-cell" x="18" y="36" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.90"/><rect class="heat-cell" x="36" y="36" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.20"/><rect class="heat-cell" x="54" y="36" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.60"/><rect class="heat-cell" x="0" y="54" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.30"/><rect class="heat-cell" x="18" y="54" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.70"/><rect class="heat-cell" x="36" y="54" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.40"/><rect class="heat-cell" x="54" y="54" width="16" height="16" rx="2" fill="#1f6feb" fill-opacity="0.20"/><text class="formula" x="36" y="96">W_Q</text></g><g transform="translate(135,55)"><rect class="heat-cell" x="0" y="0" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.60"/><rect class="heat-cell" x="18" y="0" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.30"/><rect class="heat-cell" x="36" y="0" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.70"/><rect class="heat-cell" x="54" y="0" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.50"/><rect class="heat-cell" x="0" y="18" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.20"/><rect class="heat-cell" x="18" y="18" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.80"/><rect class="heat-cell" x="36" y="18" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.40"/><rect class="heat-cell" x="54" y="18" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.30"/><rect class="heat-cell" x="0" y="36" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.60"/><rect class="heat-cell" x="18" y="36" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.40"/><rect class="heat-cell" x="36" y="36" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.80"/><rect class="heat-cell" x="54" y="36" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.20"/><rect class="heat-cell" x="0" y="54" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.50"/><rect class="heat-cell" x="18" y="54" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.70"/><rect class="heat-cell" x="36" y="54" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.30"/><rect class="heat-cell" x="54" y="54" width="16" height="16" rx="2" fill="#7b2cbf" fill-opacity="0.60"/><text class="formula" x="36" y="96">W_K</text></g></g>
+        <text class="formula" data-from-stage="1" x="125" y="88">·</text>
+        <g data-from-stage="2"><g transform="translate(265,55)"><rect class="heat-cell" x="0" y="0" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.90"/><rect class="heat-cell" x="18" y="0" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.70"/><rect class="heat-cell" x="36" y="0" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.20"/><rect class="heat-cell" x="54" y="0" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.10"/><rect class="heat-cell" x="0" y="18" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.60"/><rect class="heat-cell" x="18" y="18" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.80"/><rect class="heat-cell" x="36" y="18" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.30"/><rect class="heat-cell" x="54" y="18" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.20"/><rect class="heat-cell" x="0" y="36" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.20"/><rect class="heat-cell" x="18" y="36" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.30"/><rect class="heat-cell" x="36" y="36" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.50"/><rect class="heat-cell" x="54" y="36" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.40"/><rect class="heat-cell" x="0" y="54" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.10"/><rect class="heat-cell" x="18" y="54" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.20"/><rect class="heat-cell" x="36" y="54" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.40"/><rect class="heat-cell" x="54" y="54" width="16" height="16" rx="2" fill="#0d9488" fill-opacity="0.60"/><text class="formula" x="36" y="96">W_Q^T W_K</text></g></g>
+        <g data-from-stage="3" transform="translate(260,160)">
+        <text class="formula" x="48" y="14" fill="#1f6feb" text-anchor="start">E_pos</text>
+        <text class="formula" x="48" y="32" fill="#ff8a3d" text-anchor="start">v_rel</text>
         <path d="M0,8 L40,8"  stroke="#1f6feb" stroke-width="2" marker-end="url(#ah-blue)"/>
         <path d="M0,26 L40,26" stroke="#ff8a3d" stroke-width="2" marker-end="url(#ah-orange)"/>
         </g>
         <g data-from-stage="4">
-        <path d="M362,72 C420,72 460,90 530,90" stroke="#0d9488" stroke-width="2" fill="none" marker-end="url(#ah-teal)"/>
-        <text class="axis-label" x="446" y="76" text-anchor="middle" fill="#0d9488">score</text>
+        <path d="M395,100 C440,100 470,100 540,100" stroke="#0d9488" stroke-width="2" fill="none" marker-end="url(#ah-teal)"/>
+        <text class="axis-label" x="467" y="94" text-anchor="middle" fill="#0d9488">score</text>
         </g>
-        <g data-from-stage="1" transform="translate(540,38)">
-        <text class="axis-label-side" x="-6" y="10.0">L0</text>
-        <text class="axis-label-side" x="-6" y="34.0">L1</text>
-        <text class="axis-label-side" x="-6" y="58.0">L2</text>
-        <text class="axis-label-side" x="-6" y="82.0">L3</text>
-        <text class="axis-label" x="18.0" y="-6">H0</text>
-        <text class="axis-label" x="58.0" y="-6">H1</text>
-        <text class="axis-label" x="98.0" y="-6">H2</text>
-        <text class="axis-label" x="138.0" y="-6">H3</text>
-        <text class="axis-label" x="178.0" y="-6">H4</text>
-        <text class="axis-label" x="218.0" y="-6">H5</text>
-        <rect class="synopsis-cell" x="0" y="0" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="40" y="0" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="80" y="0" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="120" y="0" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="160" y="0" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="200" y="0" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="0" y="24" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="40" y="24" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="80" y="24" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="120" y="24" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="160" y="24" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="200" y="24" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="0" y="48" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="40" y="48" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="80" y="48" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="120" y="48" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="160" y="48" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="200" y="48" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="0" y="72" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="40" y="72" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="80" y="72" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="120" y="72" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="160" y="72" width="36" height="20" rx="3"/>
-        <rect class="synopsis-cell" x="200" y="72" width="36" height="20" rx="3"/>
+        <g data-from-stage="1" transform="translate(560,55)">
+        <text class="axis-label-side" x="-6" y="11.0">L0</text>
+        <text class="axis-label-side" x="-6" y="36.0">L1</text>
+        <text class="axis-label-side" x="-6" y="61.0">L2</text>
+        <text class="axis-label-side" x="-6" y="86.0">L3</text>
+        <text class="axis-label-side" x="-6" y="111.0">L4</text>
+        <text class="axis-label-side" x="-6" y="136.0">L5</text>
+        <text class="axis-label" x="11.0" y="-6">H0</text>
+        <text class="axis-label" x="36.0" y="-6">H1</text>
+        <text class="axis-label" x="61.0" y="-6">H2</text>
+        <text class="axis-label" x="86.0" y="-6">H3</text>
+        <text class="axis-label" x="111.0" y="-6">H4</text>
+        <text class="axis-label" x="136.0" y="-6">H5</text>
+        <rect class="synopsis-cell" x="0" y="0" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="25" y="0" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="50" y="0" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="75" y="0" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="100" y="0" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="125" y="0" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="0" y="25" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="25" y="25" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="50" y="25" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="75" y="25" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="100" y="25" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="125" y="25" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="0" y="50" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="25" y="50" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="50" y="50" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="75" y="50" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="100" y="50" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="125" y="50" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="0" y="75" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="25" y="75" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="50" y="75" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="75" y="75" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="100" y="75" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="125" y="75" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="0" y="100" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="25" y="100" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="50" y="100" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="75" y="100" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="100" y="100" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="125" y="100" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="0" y="125" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="25" y="125" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="50" y="125" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="75" y="125" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="100" y="125" width="22" height="22" rx="3"/>
+        <rect class="synopsis-cell" x="125" y="125" width="22" height="22" rx="3"/>
         </g>
-        <g data-from-stage="4" transform="translate(540,38)">
-        <rect x="0" y="0" width="36" height="20" rx="3" fill="#ff8a3d" fill-opacity="0.29"/>
-        <rect x="40" y="0" width="36" height="20" rx="3" fill="#ff8a3d" fill-opacity="0.32"/>
-        <rect x="80" y="0" width="36" height="20" rx="3" fill="#ff8a3d" fill-opacity="0.30"/>
-        <rect x="120" y="0" width="36" height="20" rx="3" fill="#ff8a3d" fill-opacity="0.26"/>
-        <rect x="160" y="0" width="36" height="20" rx="3" fill="#ff8a3d" fill-opacity="0.38"/>
-        <rect x="200" y="0" width="36" height="20" rx="3" fill="#ff8a3d" fill-opacity="0.24"/>
-        <rect x="0" y="24" width="36" height="20" rx="3" fill="#ff8a3d" fill-opacity="0.34"/>
-        <rect x="40" y="24" width="36" height="20" rx="3" fill="#ff8a3d" fill-opacity="0.30"/>
-        <rect x="80" y="24" width="36" height="20" rx="3" fill="#ff8a3d" fill-opacity="0.29"/>
-        <rect x="120" y="24" width="36" height="20" rx="3" fill="#ff8a3d" fill-opacity="0.32"/>
-        <rect x="160" y="24" width="36" height="20" rx="3" fill="#ff8a3d" fill-opacity="0.36"/>
-        <rect x="200" y="24" width="36" height="20" rx="3" fill="#ff8a3d" fill-opacity="0.71"/>
-        <rect x="0" y="48" width="36" height="20" rx="3" fill="#ff8a3d" fill-opacity="0.32"/>
-        <rect x="40" y="48" width="36" height="20" rx="3" fill="#ff8a3d" fill-opacity="0.26"/>
-        <rect x="80" y="48" width="36" height="20" rx="3" fill="#ff8a3d" fill-opacity="0.38"/>
-        <rect x="120" y="48" width="36" height="20" rx="3" fill="#ff8a3d" fill-opacity="0.79"/>
-        <rect x="160" y="48" width="36" height="20" rx="3" fill="#ff8a3d" fill-opacity="0.64"/>
-        <rect x="200" y="48" width="36" height="20" rx="3" fill="#ff8a3d" fill-opacity="0.30"/>
-        <rect x="0" y="72" width="36" height="20" rx="3" fill="#ff8a3d" fill-opacity="0.38"/>
-        <rect x="40" y="72" width="36" height="20" rx="3" fill="#ff8a3d" fill-opacity="0.30"/>
-        <rect x="80" y="72" width="36" height="20" rx="3" fill="#ff8a3d" fill-opacity="0.29"/>
-        <rect x="120" y="72" width="36" height="20" rx="3" fill="#ff8a3d" fill-opacity="0.36"/>
-        <rect x="160" y="72" width="36" height="20" rx="3" fill="#ff8a3d" fill-opacity="0.34"/>
-        <rect x="200" y="72" width="36" height="20" rx="3" fill="#ff8a3d" fill-opacity="0.32"/>
+        <g data-from-stage="4" transform="translate(560,55)">
+        <rect x="0" y="0" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.29"/>
+        <rect x="25" y="0" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.32"/>
+        <rect x="50" y="0" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.30"/>
+        <rect x="75" y="0" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.26"/>
+        <rect x="100" y="0" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.38"/>
+        <rect x="125" y="0" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.24"/>
+        <rect x="0" y="25" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.34"/>
+        <rect x="25" y="25" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.30"/>
+        <rect x="50" y="25" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.29"/>
+        <rect x="75" y="25" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.38"/>
+        <rect x="100" y="25" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.36"/>
+        <rect x="125" y="25" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.45"/>
+        <rect x="0" y="50" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.32"/>
+        <rect x="25" y="50" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.26"/>
+        <rect x="50" y="50" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.81"/>
+        <rect x="75" y="50" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.38"/>
+        <rect x="100" y="50" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.45"/>
+        <rect x="125" y="50" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.30"/>
+        <rect x="0" y="75" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.38"/>
+        <rect x="25" y="75" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.73"/>
+        <rect x="50" y="75" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.29"/>
+        <rect x="75" y="75" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.36"/>
+        <rect x="100" y="75" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.34"/>
+        <rect x="125" y="75" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.32"/>
+        <rect x="0" y="100" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.45"/>
+        <rect x="25" y="100" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.30"/>
+        <rect x="50" y="100" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.29"/>
+        <rect x="75" y="100" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.36"/>
+        <rect x="100" y="100" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.77"/>
+        <rect x="125" y="100" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.32"/>
+        <rect x="0" y="125" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.38"/>
+        <rect x="25" y="125" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.45"/>
+        <rect x="50" y="125" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.29"/>
+        <rect x="75" y="125" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.36"/>
+        <rect x="100" y="125" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.34"/>
+        <rect x="125" y="125" width="22" height="22" rx="3" fill="#ff8a3d" fill-opacity="0.32"/>
         </g>
-        <g data-from-stage="5" transform="translate(540,38)">
-        <rect x="120" y="48" width="36" height="20" rx="3" fill="none" stroke="#1a1a1a" stroke-width="2"/>
-        <rect x="160" y="48" width="36" height="20" rx="3" fill="none" stroke="#1a1a1a" stroke-width="2"/>
-        <rect x="200" y="24" width="36" height="20" rx="3" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+        <g data-from-stage="5" transform="translate(560,55)">
+        <rect x="25" y="75" width="22" height="22" rx="3" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+        <rect x="100" y="100" width="22" height="22" rx="3" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+        <rect x="50" y="50" width="22" height="22" rx="3" fill="none" stroke="#1a1a1a" stroke-width="2"/>
         </g>
     </svg>
 
@@ -1155,11 +1191,11 @@
     { x: 5 },
     { x: [
       'Click <b>Play</b> to trace the <b>attention-map synopsis</b> method.',
-      'For each (layer, head), record its cross-attention map — rows = image positions, columns = text tokens.',
-      'Group the token columns by <i>category</i>: <span style="color:#ec4899;font-weight:600">color</span>, <span style="color:#10b981;font-weight:600">shape</span>, <span style="color:#ff8a3d;font-weight:600">relation</span>, <span style="color:#94a3b8;font-weight:600">filler</span>.',
-      'Average attention within each category → a 4-vector per head (its <i>category profile</i>).',
-      'Sweep across all (layer, head); color each cell of the synopsis grid by the head\'s dominant category.',
-      'A handful of heads cluster on <b>relation</b> and <b>shape</b> — these are the candidates for circuit-level analysis.'
+      'For each (layer, head), record its cross-attention map — image positions (<b>obj1</b> / <b>bg</b> / <b>obj2</b>) × text tokens.',
+      'Highlight specific <i>(image region, token)</i> pairs — e.g. <span style="color:#ec4899;font-weight:600">obj1→color1</span>, <span style="color:#10b981;font-weight:600">obj1→shape1</span>, <span style="color:#ff8a3d;font-weight:600">obj1→rel</span>.',
+      'Average within each pair → here, <b>obj1 attends strongly to "left of"</b>: a relation-head signature.',
+      'Repeat per head and aggregate; color each cell of the synopsis grid by the head\'s dominant (region, token) pair.',
+      'A handful of heads stand out — relation heads (orange) and object heads (green) become the circuit-analysis candidates.'
     ] },
     'x'
   );
