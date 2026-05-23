@@ -412,8 +412,10 @@
         <text class="col-label" x="120" y="28">(image tokens × text tokens)</text>
         <text class="col-label" x="395" y="14">average by</text>
         <text class="col-label" x="395" y="28">(img token type) × (text token type)</text>
-        <text class="col-label" x="633" y="14">synopsis grid</text>
-        <text class="col-label" x="633" y="28">(layer × head)</text>
+        <text class="col-label" x="552" y="14">tensor</text>
+        <text class="col-label" x="552" y="28">(layer × head × t)</text>
+        <text class="col-label" x="738" y="14">synopsis grid</text>
+        <text class="col-label" x="738" y="28">(layer × head)</text>
         <g data-from-stage="1" transform="translate(85,50)">
         <rect class="heat-cell" x="0" y="0" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.50"/>
         <rect class="heat-cell" x="22" y="0" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.70"/>
@@ -509,11 +511,25 @@
         <rect x="0" y="74" width="82.5" height="12" rx="2" fill="#ff8a3d" fill-opacity="0.85"/>
         <text class="axis-label" x="87.5" y="83" text-anchor="start">0.75</text>
         </g>
-        <g data-from-stage="4">
-        <path d="M455,110 C485,110 510,110 540,110" stroke="#5b6470" stroke-width="2" fill="none" marker-end="url(#ah-gray)"/>
-        <text class="axis-label" x="497" y="104" text-anchor="middle">aggregate</text>
+        <g data-from-stage="1" transform="translate(510,88)">
+        <path d="M80,0 L80,80 L92,70 L92,-10 Z" fill="#e6e8eb" stroke="#94a3b8" stroke-width="0.8"/>
+        <path d="M0,0 L80,0 L92,-10 L12,-10 Z" fill="#f1f4f8" stroke="#94a3b8" stroke-width="0.8"/>
+        <rect x="0" y="0" width="80" height="80" fill="#fbfcfd" stroke="#94a3b8" stroke-width="1"/>
+        <line x1="13.33" y1="0" x2="13.33" y2="80" stroke="#d4dae2" stroke-width="0.5"/>
+        <line x1="26.67" y1="0" x2="26.67" y2="80" stroke="#d4dae2" stroke-width="0.5"/>
+        <line x1="40.00" y1="0" x2="40.00" y2="80" stroke="#d4dae2" stroke-width="0.5"/>
+        <line x1="53.33" y1="0" x2="53.33" y2="80" stroke="#d4dae2" stroke-width="0.5"/>
+        <line x1="66.67" y1="0" x2="66.67" y2="80" stroke="#d4dae2" stroke-width="0.5"/>
+        <line x1="0" y1="13.33" x2="80" y2="13.33" stroke="#d4dae2" stroke-width="0.5"/>
+        <line x1="0" y1="26.67" x2="80" y2="26.67" stroke="#d4dae2" stroke-width="0.5"/>
+        <line x1="0" y1="40.00" x2="80" y2="40.00" stroke="#d4dae2" stroke-width="0.5"/>
+        <line x1="0" y1="53.33" x2="80" y2="53.33" stroke="#d4dae2" stroke-width="0.5"/>
+        <line x1="0" y1="66.67" x2="80" y2="66.67" stroke="#d4dae2" stroke-width="0.5"/>
+        <text class="axis-label" x="40" y="91" text-anchor="middle">head</text>
+        <text class="axis-label" transform="rotate(-90 -6 40)" x="-6" y="40" text-anchor="middle">layer</text>
+        <text class="axis-label" transform="rotate(-30 60 -16)" x="60" y="-16" text-anchor="middle">t (timestep)</text>
         </g>
-        <g data-from-stage="1" transform="translate(560,55)">
+        <g data-from-stage="1" transform="translate(665,55)">
         <text class="axis-label-side" x="-6" y="11.0">L0</text>
         <text class="axis-label-side" x="-6" y="36.0">L1</text>
         <text class="axis-label-side" x="-6" y="61.0">L2</text>
@@ -563,7 +579,13 @@
         <rect class="synopsis-cell" x="100" y="125" width="22" height="22" rx="3"/>
         <rect class="synopsis-cell" x="125" y="125" width="22" height="22" rx="3"/>
         </g>
-        <g data-from-stage="4" transform="translate(560,55)">
+        <g data-from-stage="4">
+        <path d="M460,128 C485,128 495,128 505,128" stroke="#5b6470" stroke-width="2" fill="none" marker-end="url(#ah-gray)"/>
+        <text class="axis-label" x="482" y="122" text-anchor="middle">aggregate</text>
+        <path d="M605,128 C625,128 640,128 660,128" stroke="#5b6470" stroke-width="2" fill="none" marker-end="url(#ah-gray)"/>
+        <text class="axis-label" x="632" y="122" text-anchor="middle">avg over t</text>
+        </g>
+        <g data-from-stage="4" transform="translate(665,55)">
         <rect x="0" y="0" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.3"/>
         <rect x="25" y="0" width="22" height="22" rx="3" fill="#ec4899" fill-opacity="0.85"/>
         <rect x="50" y="0" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.3"/>
@@ -601,7 +623,7 @@
         <rect x="100" y="125" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.3"/>
         <rect x="125" y="125" width="22" height="22" rx="3" fill="#94a3b8" fill-opacity="0.3"/>
         </g>
-        <g data-from-stage="5" transform="translate(560,55)">
+        <g data-from-stage="5" transform="translate(665,55)">
         <rect x="25" y="75" width="22" height="22" rx="3" fill="none" stroke="#1a1a1a" stroke-width="2"/>
         <rect x="100" y="100" width="22" height="22" rx="3" fill="none" stroke="#1a1a1a" stroke-width="2"/>
         <rect x="50" y="50" width="22" height="22" rx="3" fill="none" stroke="#1a1a1a" stroke-width="2"/>
@@ -1217,7 +1239,7 @@
       'For each (layer, head), record its cross-attention map — image positions (<b>obj1</b> / <b>bg</b> / <b>obj2</b>) × text tokens.',
       'Highlight specific <i>(image region, token)</i> pairs — e.g. <span style="color:#ec4899;font-weight:600">obj1→color1</span>, <span style="color:#10b981;font-weight:600">obj1→shape1</span>, <span style="color:#ff8a3d;font-weight:600">obj1→rel</span>.',
       'Average within each pair → here, <b>obj1 attends strongly to "left of"</b>: a relation-head signature.',
-      'Repeat per head and aggregate; color each cell of the synopsis grid by the head\'s dominant (region, token) pair.',
+      'Stack profiles per (layer, head, timestep) into a 3D tensor, then average over <i>t</i> → a 2D synopsis grid colored by each head\'s dominant (region, token) pair.',
       'A handful of heads stand out — relation heads (orange) and object heads (green) become the circuit-analysis candidates.'
     ] },
     'x'
