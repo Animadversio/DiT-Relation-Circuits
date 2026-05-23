@@ -167,6 +167,89 @@
     section { padding: 36px 0; }
     .btn { padding: 8px 14px; font-size: 0.9rem; }
   }
+
+  /* === Interactive circuit widget (Figure 6) === */
+  .circuit-widget {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px;
+    background: #fbfcfd;
+    margin: 28px 0 8px;
+  }
+  .circuit-header {
+    display: flex; flex-wrap: wrap; justify-content: space-between;
+    align-items: center; gap: 12px; margin-bottom: 14px;
+  }
+  .circuit-mode-label { font-size: 0.95rem; color: var(--muted); }
+  .circuit-mode-label b { color: var(--fg); }
+  .circuit-toggle {
+    display: inline-flex; border: 1px solid var(--border);
+    border-radius: 999px; overflow: hidden; background: #fff;
+  }
+  .circuit-toggle button {
+    border: none; background: transparent;
+    padding: 6px 14px; font-size: 0.85rem;
+    font-family: inherit; color: var(--muted); cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .circuit-toggle button.active { background: var(--accent); color: #fff; font-weight: 600; }
+  .circuit-svg {
+    width: 100%; height: auto; display: block;
+    background: #fff; border: 1px solid var(--border); border-radius: 6px;
+  }
+  .circuit-svg [data-from-stage] { opacity: 0; transition: opacity 0.5s ease; }
+  .circuit-svg [data-from-stage].on { opacity: 1; }
+  .circuit-widget[data-mode="rte"] .mode-t5,
+  .circuit-widget[data-mode="t5"]  .mode-rte { display: none; }
+  .circuit-svg .tok rect { fill: #f1f4f8; stroke: #d4dae2; stroke-width: 1; }
+  .circuit-svg .tok text {
+    font-family: "JetBrains Mono", monospace; font-size: 13px;
+    text-anchor: middle; fill: #1a1a1a; dominant-baseline: middle;
+  }
+  .circuit-svg .tok-relation rect { fill: #ffe9d6; stroke: #ff8a3d; stroke-width: 1.5; }
+  .circuit-widget[data-mode="t5"] .tok-shape2 rect { fill: #ead7ff; stroke: #7b2cbf; stroke-width: 1.5; }
+  .circuit-svg .head rect { fill: #fff; stroke: #d4dae2; stroke-width: 1.5; }
+  .circuit-svg .head-relation rect { stroke: #1f6feb; }
+  .circuit-svg .head-object rect { stroke: #e0245e; }
+  .circuit-svg .head text {
+    font-family: "Google Sans", sans-serif; font-size: 13px; font-weight: 600;
+    text-anchor: middle; dominant-baseline: middle; fill: #1a1a1a;
+  }
+  .circuit-svg .head text.sub { font-size: 10px; font-weight: 400; fill: var(--muted); }
+  .circuit-svg .arrow { fill: none; stroke-width: 2; }
+  .circuit-svg .col-label {
+    font-family: "Google Sans", sans-serif; font-size: 11px;
+    text-anchor: middle; fill: var(--muted); font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .circuit-svg .grid-bg { fill: #f6f8fa; stroke: #d4dae2; }
+  .circuit-svg .grid-line { stroke: #e6e8eb; stroke-width: 0.5; }
+  .circuit-svg .fuse { fill: none; stroke: #7b2cbf; stroke-width: 1.2; stroke-dasharray: 3 3; }
+  .circuit-svg .annot text {
+    font-family: "Google Sans", sans-serif; font-size: 11px;
+    fill: #7b2cbf; font-style: italic; text-anchor: middle;
+  }
+  .circuit-controls {
+    display: flex; align-items: center; gap: 8px;
+    flex-wrap: wrap; margin-top: 14px;
+  }
+  .circuit-controls button {
+    padding: 6px 14px; border: 1px solid var(--border);
+    background: #fff; border-radius: 6px; font-family: inherit;
+    font-size: 0.88rem; color: var(--fg); cursor: pointer;
+    transition: background 0.12s, border-color 0.12s;
+  }
+  .circuit-controls button:hover { background: var(--code-bg); border-color: #c4cad2; }
+  .circuit-controls button[data-action="play"] {
+    background: var(--accent); color: #fff; border-color: var(--accent);
+  }
+  .circuit-controls button[data-action="play"]:hover { background: #1858c7; }
+  .circuit-explainer {
+    flex: 1; min-width: 200px; color: var(--muted);
+    font-size: 0.9rem; padding-left: 12px;
+    border-left: 2px solid var(--border); margin-left: 4px;
+    line-height: 1.45;
+  }
 </style>
 </head>
 <body>
@@ -245,9 +328,130 @@
     <img src="https://arxiv.org/html/2601.06338v2/figs/Figure_ObjectShapeHead_Final.png" alt="Object generation head in RTE-DiT" />
     <div class="caption"><b>Figure 5.</b> The object generation head mediates between shape tokens and the tagged image regions, completing the two-stage circuit.</div>
   </div>
-  <div class="figure">
-    <img src="https://arxiv.org/html/2601.06338v2/figs/Figure_Attn_location_circuit_diagram-02.png" alt="RTE-DiT circuit schematic" />
-    <div class="caption"><b>Figure 6.</b> End-to-end circuit schematic for RTE-DiT: positional tagging (relation head) → object placement (object head).</div>
+  <div class="circuit-widget" id="circuit-widget" data-mode="rte" data-stage="0">
+    <div class="circuit-header">
+      <div class="circuit-mode-label"><b>Figure 6 (interactive).</b> Step through the circuit; toggle the encoder to compare.</div>
+      <div class="circuit-toggle" role="tablist" aria-label="Circuit mode">
+        <button data-mode="rte" class="active" aria-pressed="true">RTE-DiT · two-stage</button>
+        <button data-mode="t5" aria-pressed="false">T5-DiT · fused</button>
+      </div>
+    </div>
+
+    <svg class="circuit-svg" viewBox="0 0 820 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interactive circuit diagram">
+      <defs>
+        <marker id="ah-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1f6feb"/></marker>
+        <marker id="ah-red"  viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#e0245e"/></marker>
+        <marker id="ah-purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7b2cbf"/></marker>
+        <linearGradient id="gradLeft" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%"  stop-color="#1f6feb" stop-opacity="0.55"/>
+          <stop offset="60%" stop-color="#1f6feb" stop-opacity="0.12"/>
+          <stop offset="100%" stop-color="#1f6feb" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+
+      <!-- column labels -->
+      <text class="col-label" x="100" y="18">Text tokens</text>
+      <text class="col-label" x="410" y="18">Cross-attention</text>
+      <text class="col-label" x="700" y="18">Image tokens</text>
+
+      <!-- Shared tokens -->
+      <g data-from-stage="1">
+        <g class="tok" transform="translate(20,32)"><rect width="160" height="32" rx="6"/><text x="80" y="18">"red"</text></g>
+        <g class="tok" transform="translate(20,72)"><rect width="160" height="32" rx="6"/><text x="80" y="18">"cube"</text></g>
+        <g class="tok tok-relation" transform="translate(20,112)"><title>Relation word — carries spatial information</title><rect width="160" height="32" rx="6"/><text x="80" y="18">"left of"</text></g>
+        <g class="tok" transform="translate(20,152)"><rect width="160" height="32" rx="6"/><text x="80" y="18">"blue"</text></g>
+        <g class="tok tok-shape2" transform="translate(20,192)"><title>Second shape — in T5, also encodes the relation</title><rect width="160" height="32" rx="6"/><text x="80" y="18">"sphere"</text></g>
+      </g>
+
+      <!-- Image grid base -->
+      <g data-from-stage="1" transform="translate(610,55)">
+        <rect class="grid-bg" width="180" height="180" rx="6"/>
+        <g class="grid-lines">
+          <line class="grid-line" x1="30"  y1="0" x2="30"  y2="180"/>
+          <line class="grid-line" x1="60"  y1="0" x2="60"  y2="180"/>
+          <line class="grid-line" x1="90"  y1="0" x2="90"  y2="180"/>
+          <line class="grid-line" x1="120" y1="0" x2="120" y2="180"/>
+          <line class="grid-line" x1="150" y1="0" x2="150" y2="180"/>
+          <line class="grid-line" x1="0" y1="30"  x2="180" y2="30"/>
+          <line class="grid-line" x1="0" y1="60"  x2="180" y2="60"/>
+          <line class="grid-line" x1="0" y1="90"  x2="180" y2="90"/>
+          <line class="grid-line" x1="0" y1="120" x2="180" y2="120"/>
+          <line class="grid-line" x1="0" y1="150" x2="180" y2="150"/>
+        </g>
+      </g>
+
+      <!-- ===== RTE mode ===== -->
+      <g class="mode-rte">
+        <g class="head head-relation" data-from-stage="2" transform="translate(335,70)">
+          <title>Spatial Relation Head (e.g. L2H8) — QK aligns relation features with position</title>
+          <rect width="150" height="48" rx="24"/>
+          <text x="75" y="20">Relation Head</text>
+          <text class="sub" x="75" y="36">QK · position</text>
+        </g>
+        <g class="head head-object" data-from-stage="4" transform="translate(335,180)">
+          <title>Object Generation Head — reads tagged positions, renders shape</title>
+          <rect width="150" height="48" rx="24"/>
+          <text x="75" y="20">Object Head</text>
+          <text class="sub" x="75" y="36">value · shape</text>
+        </g>
+        <!-- relation token → relation head -->
+        <path class="arrow" data-from-stage="2" stroke="#1f6feb" marker-end="url(#ah-blue)"
+              d="M180,128 C260,128 280,94 333,94"/>
+        <!-- relation head → image grid (positional tag) -->
+        <path class="arrow" data-from-stage="3" stroke="#1f6feb" marker-end="url(#ah-blue)"
+              d="M485,94 C540,94 560,120 608,125"/>
+        <!-- shape tokens → object head -->
+        <path class="arrow" data-from-stage="4" stroke="#e0245e" marker-end="url(#ah-red)"
+              d="M180,88  C260,88  280,204 333,204"/>
+        <path class="arrow" data-from-stage="4" stroke="#e0245e" marker-end="url(#ah-red)"
+              d="M180,208 C260,208 280,204 333,204"/>
+        <!-- object head → image grid (render) -->
+        <path class="arrow" data-from-stage="5" stroke="#e0245e" marker-end="url(#ah-red)"
+              d="M485,204 C540,204 560,170 608,170"/>
+        <!-- gradient overlay (positional tag visualization) -->
+        <g data-from-stage="3" transform="translate(610,55)">
+          <rect width="180" height="180" rx="6" fill="url(#gradLeft)"/>
+        </g>
+        <!-- final shapes -->
+        <g data-from-stage="5" transform="translate(610,55)">
+          <rect x="28" y="70" width="40" height="40" rx="4" fill="#e0245e"/>
+          <circle cx="135" cy="92" r="22" fill="#1f6feb"/>
+        </g>
+      </g>
+
+      <!-- ===== T5 mode ===== -->
+      <g class="mode-t5">
+        <!-- fusion: dashed arcs from each non-shape2 token curving into shape2 -->
+        <g data-from-stage="2">
+          <path class="fuse" marker-end="url(#ah-purple)" d="M180,48  C320,48  320,208 184,208"/>
+          <path class="fuse" marker-end="url(#ah-purple)" d="M180,88  C310,88  310,208 184,208"/>
+          <path class="fuse" marker-end="url(#ah-purple)" d="M180,128 C300,128 300,208 184,208"/>
+          <path class="fuse" marker-end="url(#ah-purple)" d="M180,168 C290,168 290,208 184,208"/>
+        </g>
+        <g class="annot" data-from-stage="2"><text x="240" y="265">context fuses into the "sphere" token</text></g>
+        <!-- direct arrow: shape2 → image -->
+        <path class="arrow" data-from-stage="3" stroke="#7b2cbf" marker-end="url(#ah-purple)"
+              d="M180,208 C380,208 420,145 608,145"/>
+        <!-- final shapes -->
+        <g data-from-stage="3" transform="translate(610,55)">
+          <rect x="28" y="70" width="40" height="40" rx="4" fill="#e0245e"/>
+          <circle cx="135" cy="92" r="22" fill="#1f6feb"/>
+        </g>
+      </g>
+    </svg>
+
+    <div class="circuit-controls">
+      <button data-action="play" type="button" aria-label="Play animation">▶ Play</button>
+      <button data-action="step" type="button" aria-label="Advance one step">Step ▶</button>
+      <button data-action="reset" type="button" aria-label="Reset">↺ Reset</button>
+      <div class="circuit-explainer" aria-live="polite">Click <b>Play</b> to trace the RTE-DiT circuit.</div>
+    </div>
+
+    <noscript>
+      <img src="https://arxiv.org/html/2601.06338v2/figs/Figure_Attn_location_circuit_diagram-02.png" alt="Static circuit schematic (interactive version requires JavaScript)" style="margin-top:14px;width:100%;border:1px solid var(--border);border-radius:6px;" />
+    </noscript>
+
+    <div class="caption" style="margin-top:14px;"><b>Figure 6.</b> End-to-end circuit comparison. <b>RTE-DiT</b> (default): a two-stage circuit where a relation head writes a positional tag via QK with position embeddings, and an object head reads that tag to render the correct shape. <b>T5-DiT</b>: contextual fusion collapses the same computation into a single fused token (here "sphere"), which can drive the image directly — explaining why ablating the relation word has little effect, but inserting filler words breaks the layout.</div>
   </div>
 
   <h3>T5-DiT: information fusion in object tokens</h3>
@@ -279,6 +483,94 @@
 </section>
 
 </main>
+
+<script>
+(function () {
+  var widget = document.getElementById('circuit-widget');
+  if (!widget) return;
+  var explainer = widget.querySelector('.circuit-explainer');
+  var stageCaps = { rte: 5, t5: 3 };
+  var messages = {
+    rte: [
+      'Click <b>Play</b> to trace the RTE-DiT circuit.',
+      'Text tokens enter cross-attention.',
+      'The <b>Relation Head</b> reads the relation word via its QK circuit.',
+      'It writes a <b>positional tag</b> — a spatial gradient — into image tokens.',
+      'The <b>Object Head</b> reads shape tokens, attending to the tagged positions.',
+      'Shapes render in the correct spatial configuration.'
+    ],
+    t5: [
+      'Click <b>Play</b> to trace the T5-DiT circuit.',
+      'Text tokens enter cross-attention.',
+      'T5 <b>fuses context</b> — spatial info leaks into the "sphere" embedding.',
+      'A single fused token directly drives the image; the relation word can be ablated.'
+    ]
+  };
+  var timer = null;
+
+  function update() {
+    var stage = +widget.dataset.stage;
+    var mode = widget.dataset.mode;
+    var nodes = widget.querySelectorAll('[data-from-stage]');
+    for (var i = 0; i < nodes.length; i++) {
+      var n = nodes[i];
+      n.classList.toggle('on', +n.dataset.fromStage <= stage);
+    }
+    explainer.innerHTML = messages[mode][stage] || messages[mode][0];
+  }
+
+  function setStage(n) {
+    var mode = widget.dataset.mode;
+    var cap = stageCaps[mode];
+    widget.dataset.stage = String(Math.max(0, Math.min(cap, n)));
+    update();
+  }
+
+  function stop() {
+    if (timer) { clearInterval(timer); timer = null; }
+    var btn = widget.querySelector('button[data-action="play"]');
+    if (btn) btn.textContent = '▶ Play';
+  }
+
+  function play() {
+    stop();
+    var mode = widget.dataset.mode;
+    setStage(0);
+    var i = 0;
+    var btn = widget.querySelector('button[data-action="play"]');
+    if (btn) btn.textContent = '⏸ Pause';
+    timer = setInterval(function () {
+      i += 1;
+      if (i > stageCaps[mode]) { stop(); return; }
+      setStage(i);
+    }, 1300);
+  }
+
+  widget.querySelectorAll('.circuit-controls button').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var a = btn.dataset.action;
+      if (a === 'play') { timer ? stop() : play(); }
+      else if (a === 'step') { stop(); setStage((+widget.dataset.stage) + 1); }
+      else if (a === 'reset') { stop(); setStage(0); }
+    });
+  });
+
+  widget.querySelectorAll('.circuit-toggle button').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      stop();
+      widget.dataset.mode = btn.dataset.mode;
+      widget.querySelectorAll('.circuit-toggle button').forEach(function (b) {
+        var on = b === btn;
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      setStage(0);
+    });
+  });
+
+  update();
+})();
+</script>
 
 <footer>
   <div>Template adapted for academic project pages · <a href="https://github.com/Animadversio/DiT-Relation-Circuits">source on GitHub</a></div>
