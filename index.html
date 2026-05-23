@@ -321,7 +321,7 @@
 
 <section id="overview">
   <h2>Overview</h2>
-  <p>Text-to-image diffusion models routinely fail to place objects in the correct spatial configuration — "a red cube to the <i>left of</i> a blue sphere" comes out swapped or merged. We ask <b>mechanistically</b>: when a Diffusion Transformer <i>does</i> get spatial relations right, how does it do it, and why does the same architecture fail under tiny prompt changes?</p>
+  <p>Text-to-image diffusion models routinely fail to place objects in the correct spatial configuration — "a red square to the <i>left of</i> a blue circle" comes out swapped or merged. We ask <b>mechanistically</b>: when a Diffusion Transformer <i>does</i> get spatial relations right, how does it do it, and why does the same architecture fail under tiny prompt changes?</p>
   <p>We train PixArt-style DiTs from scratch on a controlled two-object relational dataset, varying only the text encoder. Using a scalable <b>attention synopsis</b> method we identify the specific cross-attention heads that carry relational information, trace the circuit end-to-end, and verify each step with weight-space analysis, ablations, and causal embedding manipulations.</p>
 
   <div class="figure">
@@ -403,14 +403,14 @@
       <text class="col-label" x="410" y="18">Cross-attention</text>
       <text class="col-label" x="700" y="18">Image tokens</text>
 
-      <!-- Shared tokens (6 tokens: red, square, is, left of, blue, sphere) -->
+      <!-- Shared tokens (6 tokens: red, square, is, left of, blue, circle) -->
       <g data-from-stage="1">
         <g class="tok" transform="translate(20,20)"><rect width="160" height="32" rx="6"/><text x="80" y="18">"red"</text></g>
         <g class="tok" transform="translate(20,54)"><rect width="160" height="32" rx="6"/><text x="80" y="18">"square"</text></g>
         <g class="tok" transform="translate(20,88)"><rect width="160" height="32" rx="6"/><text x="80" y="18">"is"</text></g>
         <g class="tok tok-relation" transform="translate(20,122)"><title>Relation word — carries spatial information</title><rect width="160" height="32" rx="6"/><text x="80" y="18">"left of"</text></g>
         <g class="tok" transform="translate(20,156)"><rect width="160" height="32" rx="6"/><text x="80" y="18">"blue"</text></g>
-        <g class="tok tok-shape2" transform="translate(20,190)"><title>Second shape — in T5, also encodes the relation</title><rect width="160" height="32" rx="6"/><text x="80" y="18">"sphere"</text></g>
+        <g class="tok tok-shape2" transform="translate(20,190)"><title>Second shape — in T5, also encodes the relation</title><rect width="160" height="32" rx="6"/><text x="80" y="18">"circle"</text></g>
       </g>
 
       <!-- Image grid base -->
@@ -480,10 +480,10 @@
         <text class="qkv-label" data-from-stage="3" x="548" y="112" fill="#1f6feb">O</text>
 
         <!-- ============ Object Head · QK (stage 4) ============ -->
-        <!-- K: shape tokens (square, sphere) → OH -->
-        <path class="arrow" data-from-stage="4" stroke="#e0245e" marker-end="url(#ah-red)"
+        <!-- K: shape tokens (square, circle) → OH (dashed: not certain where OH reads from) -->
+        <path class="arrow arrow-dashed" data-from-stage="4" stroke="#e0245e" marker-end="url(#ah-red)"
               d="M180,70  C260,70  280,214 333,214"/>
-        <path class="arrow" data-from-stage="4" stroke="#e0245e" marker-end="url(#ah-red)"
+        <path class="arrow arrow-dashed" data-from-stage="4" stroke="#e0245e" marker-end="url(#ah-red)"
               d="M180,206 C260,206 280,214 333,214"/>
         <text class="qkv-label" data-from-stage="4" data-until-stage="4" x="252" y="168" fill="#e0245e">K</text>
         <text class="qkv-label" data-from-stage="5" x="248" y="168" fill="#e0245e">K,V</text>
@@ -509,12 +509,12 @@
           <rect width="90" height="180" rx="6" fill="#7b2cbf" fill-opacity="0.32"/>
           <text class="qkv-label" x="45" y="-8" text-anchor="middle" fill="#7b2cbf">"becoming obj1" tag</text>
         </g>
-        <!-- Stage 4 only: OH-QK attention pattern — tagged → square, untagged → sphere -->
+        <!-- Stage 4 only: OH-QK attention pattern — tagged → square, untagged → circle -->
         <g data-from-stage="4" data-until-stage="4" transform="translate(610,55)">
           <rect x="0"  width="90"  height="180" fill="#e0245e" fill-opacity="0.16"/>
           <rect x="90" width="90"  height="180" fill="#1f6feb" fill-opacity="0.16"/>
           <text class="qkv-label" x="45"  y="172" text-anchor="middle" fill="#e0245e">attn → square</text>
-          <text class="qkv-label" x="135" y="172" text-anchor="middle" fill="#1f6feb">attn → sphere</text>
+          <text class="qkv-label" x="135" y="172" text-anchor="middle" fill="#1f6feb">attn → circle</text>
         </g>
         <!-- Stage 5+: final rendered visual features -->
         <g data-from-stage="5" transform="translate(610,55)">
@@ -526,7 +526,7 @@
       <!-- ===== T5 mode ===== -->
       <g class="mode-t5">
         <!-- ============ Stage 2: Context fusion ============ -->
-        <!-- dashed arcs from each non-shape2 token curving into "sphere" -->
+        <!-- dashed arcs from each non-shape2 token curving into "circle" -->
         <g data-from-stage="2" data-until-stage="2">
           <path class="fuse" marker-end="url(#ah-purple)" d="M180,36  C320,36  320,206 184,206"/>
           <path class="fuse" marker-end="url(#ah-purple)" d="M180,70  C310,70  310,206 184,206"/>
@@ -534,11 +534,11 @@
           <path class="fuse" marker-end="url(#ah-purple)" d="M180,138 C290,138 290,206 184,206"/>
           <path class="fuse" marker-end="url(#ah-purple)" d="M180,172 C280,172 280,206 184,206"/>
         </g>
-        <g class="annot" data-from-stage="2" data-until-stage="2"><text x="240" y="265">context fuses into the "sphere" token</text></g>
+        <g class="annot" data-from-stage="2" data-until-stage="2"><text x="240" y="265">context fuses into the "circle" token</text></g>
 
-        <!-- v_rel sub-pill inside the sphere token (persists from stage 2) -->
+        <!-- v_rel sub-pill inside the circle token (persists from stage 2) -->
         <g class="vrel-pill" data-from-stage="2" transform="translate(135,198)">
-          <title>v_rel — relation component fused into the sphere token</title>
+          <title>v_rel — relation component fused into the circle token</title>
           <rect width="40" height="18" rx="9" fill="#7b2cbf"/>
           <text x="20" y="9">v_rel</text>
         </g>
@@ -578,7 +578,7 @@
         </g>
 
         <!-- ============ Relation Head · QK (stage 3) ============ -->
-        <!-- K: v_rel (sphere) → RH (left to right, purple) -->
+        <!-- K: v_rel (circle) → RH (left to right, purple) -->
         <path class="arrow" data-from-stage="3" stroke="#7b2cbf" marker-end="url(#ah-purple)"
               d="M175,207 C260,207 280,84 333,84"/>
         <text class="qkv-label" data-from-stage="3" data-until-stage="3" x="252" y="148" fill="#7b2cbf">K</text>
@@ -595,10 +595,10 @@
         <text class="qkv-label" data-from-stage="4" x="548" y="112" fill="#7b2cbf">O</text>
 
         <!-- ============ Object Head · QK (stage 5) ============ -->
-        <!-- K: shape tokens (square, sphere) → OH -->
-        <path class="arrow" data-from-stage="5" stroke="#e0245e" marker-end="url(#ah-red)"
+        <!-- K: shape tokens (square, circle) → OH (dashed: not certain where OH reads from) -->
+        <path class="arrow arrow-dashed" data-from-stage="5" stroke="#e0245e" marker-end="url(#ah-red)"
               d="M180,70  C260,70  280,214 333,214"/>
-        <path class="arrow" data-from-stage="5" stroke="#e0245e" marker-end="url(#ah-red)"
+        <path class="arrow arrow-dashed" data-from-stage="5" stroke="#e0245e" marker-end="url(#ah-red)"
               d="M180,206 C260,206 280,214 333,214"/>
         <text class="qkv-label" data-from-stage="5" data-until-stage="5" x="252" y="168" fill="#e0245e">K</text>
         <text class="qkv-label" data-from-stage="6" x="248" y="168" fill="#e0245e">K,V</text>
@@ -616,7 +616,7 @@
         <!-- Stage 3 only: purple attention gradient from Q·v_rel -->
         <g data-from-stage="3" data-until-stage="3" transform="translate(610,55)">
           <rect width="180" height="180" rx="6" fill="url(#gradLeftPurple)"/>
-          <text class="qkv-label" x="90" y="-8" text-anchor="middle" fill="#7b2cbf">attn scores (Q · v_rel)</text>
+          <text class="qkv-label" x="90" y="-8" text-anchor="middle" fill="#7b2cbf">attn scores (E_pos Q · K v_rel)</text>
         </g>
         <!-- Stage 4+: "becoming obj1" purple tag on left half -->
         <g data-from-stage="4" transform="translate(610,55)">
@@ -628,7 +628,7 @@
           <rect x="0"  width="90"  height="180" fill="#e0245e" fill-opacity="0.16"/>
           <rect x="90" width="90"  height="180" fill="#1f6feb" fill-opacity="0.16"/>
           <text class="qkv-label" x="45"  y="172" text-anchor="middle" fill="#e0245e">attn → square</text>
-          <text class="qkv-label" x="135" y="172" text-anchor="middle" fill="#1f6feb">attn → sphere</text>
+          <text class="qkv-label" x="135" y="172" text-anchor="middle" fill="#1f6feb">attn → circle</text>
         </g>
         <!-- Stage 6+: final rendered visual features -->
         <g data-from-stage="6" transform="translate(610,55)">
@@ -649,7 +649,7 @@
       <img src="https://arxiv.org/html/2601.06338v2/figs/Figure_Attn_location_circuit_diagram-02.png" alt="Static circuit schematic (interactive version requires JavaScript)" style="margin-top:14px;width:100%;border:1px solid var(--border);border-radius:6px;" />
     </noscript>
 
-    <div class="caption" style="margin-top:14px;"><b>Figure 6.</b> End-to-end circuit comparison. <b>RTE-DiT</b> (default): a two-stage circuit where a relation head writes a positional tag via QK with position embeddings, and an object head reads that tag to render the correct shape. <b>T5-DiT</b>: contextual fusion collapses the same computation into a single fused token (here "sphere"), which can drive the image directly — explaining why ablating the relation word has little effect, but inserting filler words breaks the layout.</div>
+    <div class="caption" style="margin-top:14px;"><b>Figure 6.</b> End-to-end circuit comparison. <b>RTE-DiT</b> (default): a two-stage circuit where a relation head writes a positional tag via QK with position embeddings, and an object head reads that tag to render the correct shape. <b>T5-DiT</b>: contextual fusion collapses the same computation into a single fused token (here "circle"), which can drive the image directly — explaining why ablating the relation word has little effect, but inserting filler words breaks the layout.</div>
   </div>
 
   <h3>T5-DiT: information fusion in object tokens</h3>
@@ -694,17 +694,17 @@
       'Text tokens enter cross-attention; image tokens carry positional embeddings.',
       '<b>Relation Head · QK</b>: <b>Q</b> from image (positional) + <b>K</b> from <i>"left of"</i> → position-dependent attention scores (blue gradient on the image grid).',
       '<b>Relation Head · VO</b>: <b>V</b> from text, <b>O</b> written into image tokens → a <span style="color:#7b2cbf;font-weight:600">"becoming obj1" tag</span> (purple) attached to the targeted positions.',
-      '<b>Object Head · QK</b>: <b>Q</b> from image + <b>K</b> from shape tokens — tokens with the <i>obj1 tag</i> attend to "square"; untagged tokens attend to "sphere".',
-      '<b>Object Head · VO</b>: <b>V</b> from text, <b>O</b> written → the actual visual features of square and sphere render in their positions.'
+      '<b>Object Head · QK</b>: <b>Q</b> from image + <b>K</b> from shape tokens — positions tagged "becoming obj1" attend to "square"; positions tagged "becoming obj2" attend to "circle".',
+      '<b>Object Head · VO</b>: <b>V</b> from text, <b>O</b> written → the actual visual features of square and circle render in their positions.'
     ],
     t5: [
       'Click <b>Play</b> to trace the T5-DiT circuit.',
       'Text tokens enter cross-attention; image tokens carry positional embeddings.',
-      '<b>Context fusion</b>: T5 contextualizes the prompt — a <span style="color:#7b2cbf;font-weight:600">v_rel</span> component (purple) materializes inside the "sphere" token, carrying the relation semantics.',
+      '<b>Context fusion</b>: T5 contextualizes the prompt — a <span style="color:#7b2cbf;font-weight:600">v_rel</span> component (purple) materializes inside the "circle" token, carrying the relation semantics.',
       '<b>Relation Head · QK</b>: <b>Q</b> from image + <b>K</b> from <b>v_rel</b> → a position-dependent attention map. Some heads align with the relation direction (→ left), others anti-align (→ right).',
       '<b>Relation Head · VO</b>: <b>V</b> from v_rel, <b>O</b> written → a "becoming obj1" tag (purple) on the targeted positions.',
-      '<b>Object Head · QK</b>: <b>Q</b> from image + <b>K</b> from shape tokens — tagged positions attend to "square"; untagged attend to "sphere".',
-      '<b>Object Head · VO</b>: <b>V</b> from text, <b>O</b> written → square and sphere render in their positions.'
+      '<b>Object Head · QK</b>: <b>Q</b> from image + <b>K</b> from shape tokens — positions tagged "becoming obj1" attend to "square"; positions tagged "becoming obj2" attend to "circle".',
+      '<b>Object Head · VO</b>: <b>V</b> from text, <b>O</b> written → square and circle render in their positions.'
     ]
   };
   var timer = null;
