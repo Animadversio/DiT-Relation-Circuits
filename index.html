@@ -247,6 +247,20 @@
   .circuit-svg .head-relation .phase-vo-badge rect { fill: #5fa0ff; }
   .circuit-svg .head-object   .phase-qk-badge rect { fill: #e0245e; }
   .circuit-svg .head-object   .phase-vo-badge rect { fill: #f06d96; }
+  /* T5 mode: relation head is purple */
+  .circuit-widget[data-mode="t5"] .head-relation rect { stroke: #7b2cbf; }
+  .circuit-widget[data-mode="t5"] .head-relation .phase-qk-badge rect { fill: #7b2cbf; }
+  .circuit-widget[data-mode="t5"] .head-relation .phase-vo-badge rect { fill: #b787e0; }
+  .circuit-svg .vrel-pill rect { stroke: #fff; stroke-width: 1; }
+  .circuit-svg .vrel-pill text {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 9px; font-weight: 700;
+    text-anchor: middle; dominant-baseline: central; fill: #fff;
+  }
+  .circuit-svg .annot-side text {
+    font-family: "Google Sans", sans-serif; font-size: 10px;
+    fill: var(--muted); font-style: italic; text-anchor: middle;
+  }
   .circuit-controls {
     display: flex; align-items: center; gap: 8px;
     flex-wrap: wrap; margin-top: 14px;
@@ -377,6 +391,11 @@
           <stop offset="0%"  stop-color="#1f6feb" stop-opacity="0.08"/>
           <stop offset="100%" stop-color="#1f6feb" stop-opacity="0.75"/>
         </linearGradient>
+        <linearGradient id="gradLeftPurple" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%"  stop-color="#7b2cbf" stop-opacity="0.55"/>
+          <stop offset="60%" stop-color="#7b2cbf" stop-opacity="0.12"/>
+          <stop offset="100%" stop-color="#7b2cbf" stop-opacity="0"/>
+        </linearGradient>
       </defs>
 
       <!-- column labels -->
@@ -506,20 +525,113 @@
 
       <!-- ===== T5 mode ===== -->
       <g class="mode-t5">
-        <!-- fusion: dashed arcs from each non-shape2 token curving into shape2 -->
-        <g data-from-stage="2">
+        <!-- ============ Stage 2: Context fusion ============ -->
+        <!-- dashed arcs from each non-shape2 token curving into "sphere" -->
+        <g data-from-stage="2" data-until-stage="2">
           <path class="fuse" marker-end="url(#ah-purple)" d="M180,36  C320,36  320,206 184,206"/>
           <path class="fuse" marker-end="url(#ah-purple)" d="M180,70  C310,70  310,206 184,206"/>
           <path class="fuse" marker-end="url(#ah-purple)" d="M180,104 C300,104 300,206 184,206"/>
           <path class="fuse" marker-end="url(#ah-purple)" d="M180,138 C290,138 290,206 184,206"/>
           <path class="fuse" marker-end="url(#ah-purple)" d="M180,172 C280,172 280,206 184,206"/>
         </g>
-        <g class="annot" data-from-stage="2"><text x="240" y="265">context fuses into the "sphere" token</text></g>
-        <!-- direct arrow: shape2 → image -->
+        <g class="annot" data-from-stage="2" data-until-stage="2"><text x="240" y="265">context fuses into the "sphere" token</text></g>
+
+        <!-- v_rel sub-pill inside the sphere token (persists from stage 2) -->
+        <g class="vrel-pill" data-from-stage="2" transform="translate(135,198)">
+          <title>v_rel — relation component fused into the sphere token</title>
+          <rect width="40" height="18" rx="9" fill="#7b2cbf"/>
+          <text x="20" y="9">v_rel</text>
+        </g>
+
+        <!-- ============ Relation Head (appears stage 3) ============ -->
+        <g class="head head-relation" data-from-stage="3" transform="translate(335,60)">
+          <title>T5 Relation Head — Q from image, K from v_rel; gradient-producing attention</title>
+          <rect width="150" height="48" rx="24"/>
+          <text x="75" y="20">Relation Head</text>
+          <g class="phase-badge phase-qk-badge" data-from-stage="3" transform="translate(46,30)">
+            <rect width="26" height="14" rx="7"/>
+            <text x="13" y="7">QK</text>
+          </g>
+          <g class="phase-badge phase-vo-badge" data-from-stage="4" transform="translate(78,30)">
+            <rect width="26" height="14" rx="7"/>
+            <text x="13" y="7">VO</text>
+          </g>
+        </g>
+        <!-- annotation noting the mix of aligned/anti-aligned heads -->
+        <g class="annot-side" data-from-stage="3" data-until-stage="3">
+          <text x="410" y="124">aligned + anti-aligned heads</text>
+        </g>
+
+        <!-- ============ Object Head (appears stage 5) ============ -->
+        <g class="head head-object" data-from-stage="5" transform="translate(335,190)">
+          <title>T5 Object Head — reads the obj1 tag and renders shape values</title>
+          <rect width="150" height="48" rx="24"/>
+          <text x="75" y="20">Object Head</text>
+          <g class="phase-badge phase-qk-badge" data-from-stage="5" transform="translate(46,30)">
+            <rect width="26" height="14" rx="7"/>
+            <text x="13" y="7">QK</text>
+          </g>
+          <g class="phase-badge phase-vo-badge" data-from-stage="6" transform="translate(78,30)">
+            <rect width="26" height="14" rx="7"/>
+            <text x="13" y="7">VO</text>
+          </g>
+        </g>
+
+        <!-- ============ Relation Head · QK (stage 3) ============ -->
+        <!-- K: v_rel (sphere) → RH (left to right, purple) -->
         <path class="arrow" data-from-stage="3" stroke="#7b2cbf" marker-end="url(#ah-purple)"
-              d="M180,206 C380,206 420,145 608,145"/>
-        <!-- final shapes -->
-        <g data-from-stage="3" transform="translate(610,55)">
+              d="M175,207 C260,207 280,84 333,84"/>
+        <text class="qkv-label" data-from-stage="3" data-until-stage="3" x="252" y="148" fill="#7b2cbf">K</text>
+        <text class="qkv-label" data-from-stage="4" x="248" y="148" fill="#7b2cbf">K,V</text>
+        <!-- Q: image → RH (dashed, right to left, purple) -->
+        <path class="arrow arrow-dashed" data-from-stage="3" stroke="#7b2cbf" marker-end="url(#ah-purple)"
+              d="M608,75 C560,45 540,42 487,58"/>
+        <text class="qkv-label" data-from-stage="3" x="548" y="40" fill="#7b2cbf">Q</text>
+
+        <!-- ============ Relation Head · VO (stage 4) ============ -->
+        <!-- O: RH → image grid (left to right, purple) -->
+        <path class="arrow" data-from-stage="4" stroke="#7b2cbf" marker-end="url(#ah-purple)"
+              d="M485,108 C540,108 560,128 608,140"/>
+        <text class="qkv-label" data-from-stage="4" x="548" y="112" fill="#7b2cbf">O</text>
+
+        <!-- ============ Object Head · QK (stage 5) ============ -->
+        <!-- K: shape tokens (square, sphere) → OH -->
+        <path class="arrow" data-from-stage="5" stroke="#e0245e" marker-end="url(#ah-red)"
+              d="M180,70  C260,70  280,214 333,214"/>
+        <path class="arrow" data-from-stage="5" stroke="#e0245e" marker-end="url(#ah-red)"
+              d="M180,206 C260,206 280,214 333,214"/>
+        <text class="qkv-label" data-from-stage="5" data-until-stage="5" x="252" y="168" fill="#e0245e">K</text>
+        <text class="qkv-label" data-from-stage="6" x="248" y="168" fill="#e0245e">K,V</text>
+        <!-- Q: image → OH (dashed) -->
+        <path class="arrow arrow-dashed" data-from-stage="5" stroke="#e0245e" marker-end="url(#ah-red)"
+              d="M608,200 C560,178 540,176 487,190"/>
+        <text class="qkv-label" data-from-stage="5" x="548" y="170" fill="#e0245e">Q</text>
+
+        <!-- ============ Object Head · VO (stage 6) ============ -->
+        <path class="arrow" data-from-stage="6" stroke="#e0245e" marker-end="url(#ah-red)"
+              d="M485,238 C540,238 560,210 608,205"/>
+        <text class="qkv-label" data-from-stage="6" x="548" y="222" fill="#e0245e">O</text>
+
+        <!-- ============ Image grid overlays (T5) ============ -->
+        <!-- Stage 3 only: purple attention gradient from Q·v_rel -->
+        <g data-from-stage="3" data-until-stage="3" transform="translate(610,55)">
+          <rect width="180" height="180" rx="6" fill="url(#gradLeftPurple)"/>
+          <text class="qkv-label" x="90" y="-8" text-anchor="middle" fill="#7b2cbf">attn scores (Q · v_rel)</text>
+        </g>
+        <!-- Stage 4+: "becoming obj1" purple tag on left half -->
+        <g data-from-stage="4" transform="translate(610,55)">
+          <rect width="90" height="180" rx="6" fill="#7b2cbf" fill-opacity="0.32"/>
+          <text class="qkv-label" x="45" y="-8" text-anchor="middle" fill="#7b2cbf">"becoming obj1" tag</text>
+        </g>
+        <!-- Stage 5 only: OH-QK attention pattern -->
+        <g data-from-stage="5" data-until-stage="5" transform="translate(610,55)">
+          <rect x="0"  width="90"  height="180" fill="#e0245e" fill-opacity="0.16"/>
+          <rect x="90" width="90"  height="180" fill="#1f6feb" fill-opacity="0.16"/>
+          <text class="qkv-label" x="45"  y="172" text-anchor="middle" fill="#e0245e">attn → square</text>
+          <text class="qkv-label" x="135" y="172" text-anchor="middle" fill="#1f6feb">attn → sphere</text>
+        </g>
+        <!-- Stage 6+: final rendered visual features -->
+        <g data-from-stage="6" transform="translate(610,55)">
           <rect x="28" y="70" width="40" height="40" rx="4" fill="#e0245e"/>
           <circle cx="135" cy="92" r="22" fill="#1f6feb"/>
         </g>
@@ -575,7 +687,7 @@
   var widget = document.getElementById('circuit-widget');
   if (!widget) return;
   var explainer = widget.querySelector('.circuit-explainer');
-  var stageCaps = { rte: 5, t5: 3 };
+  var stageCaps = { rte: 5, t5: 6 };
   var messages = {
     rte: [
       'Click <b>Play</b> to trace the RTE-DiT circuit.',
@@ -587,9 +699,12 @@
     ],
     t5: [
       'Click <b>Play</b> to trace the T5-DiT circuit.',
-      'Text tokens enter cross-attention.',
-      'T5 <b>fuses context</b> — spatial info leaks into the "sphere" embedding.',
-      'A single fused token directly drives the image; the relation word can be ablated.'
+      'Text tokens enter cross-attention; image tokens carry positional embeddings.',
+      '<b>Context fusion</b>: T5 contextualizes the prompt — a <span style="color:#7b2cbf;font-weight:600">v_rel</span> component (purple) materializes inside the "sphere" token, carrying the relation semantics.',
+      '<b>Relation Head · QK</b>: <b>Q</b> from image + <b>K</b> from <b>v_rel</b> → a position-dependent attention map. Some heads align with the relation direction (→ left), others anti-align (→ right).',
+      '<b>Relation Head · VO</b>: <b>V</b> from v_rel, <b>O</b> written → a "becoming obj1" tag (purple) on the targeted positions.',
+      '<b>Object Head · QK</b>: <b>Q</b> from image + <b>K</b> from shape tokens — tagged positions attend to "square"; untagged attend to "sphere".',
+      '<b>Object Head · VO</b>: <b>V</b> from text, <b>O</b> written → square and sphere render in their positions.'
     ]
   };
   var timer = null;
