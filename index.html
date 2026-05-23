@@ -350,6 +350,10 @@
     <img src="https://arxiv.org/html/2601.06338v2/figs/Figure_attn_head_finder_Final.png" alt="Attention synopsis identifying candidate circuit heads" />
     <div class="caption"><b>Figure 3.</b> Attention synopsis across all heads and layers. A handful of heads carry the bulk of relation- and object-specific signal; these become the candidates for circuit-level analysis.</div>
   </div>
+</section>
+
+<section id="circuits">
+  <h2>Relation Circuits in DiTs</h2>
 
   <div class="circuit-widget" id="circuit-widget" data-mode="rte" data-stage="0">
     <div class="circuit-header">
@@ -650,10 +654,7 @@
 
     <div class="caption" style="margin-top:14px;"><b>Figure 6.</b> End-to-end circuit comparison. <b>RTE-DiT</b> (default): a two-stage circuit where a relation head writes a positional tag via QK with position embeddings, and an object head reads that tag to render the correct shape. <b>T5-DiT</b>: contextual fusion collapses the same computation into a single fused token (here "circle"), which can drive the image directly — explaining why ablating the relation word has little effect, but inserting filler words breaks the layout.</div>
   </div>
-</section>
 
-<section id="circuits">
-  <h2>Relation Circuits in DiTs</h2>
 
 
   <h3>RTE-DiT: two-stage relation → object pipeline</h3>
