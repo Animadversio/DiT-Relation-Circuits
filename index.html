@@ -401,7 +401,7 @@
       <div class="circuit-mode-label"><b>Figure 3a (interactive). Attention-Map Synopsis.</b></div>
     </div>
 
-    <svg class="circuit-svg" viewBox="0 0 820 230" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Figure 3a (interactive). Attention-Map Synopsis.">
+    <svg class="circuit-svg" viewBox="0 0 820 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Figure 3a (interactive). Attention-Map Synopsis.">
       <defs>
         <marker id="ah-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5b6470"/></marker>
         <marker id="ah-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0d9488"/></marker>
@@ -409,12 +409,12 @@
         <marker id="ah-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1f6feb"/></marker>
       </defs>
         <text class="col-label" x="120" y="14">attention map</text>
-        <text class="col-label" x="120" y="28">(image pos × tokens)</text>
-        <text class="col-label" x="360" y="14">average by</text>
-        <text class="col-label" x="360" y="28">(img token type) × (text token type)</text>
+        <text class="col-label" x="120" y="28">(image tokens × text tokens)</text>
+        <text class="col-label" x="395" y="14">average by</text>
+        <text class="col-label" x="395" y="28">(img token type) × (text token type)</text>
         <text class="col-label" x="633" y="14">synopsis grid</text>
         <text class="col-label" x="633" y="28">(layer × head)</text>
-        <g data-from-stage="1" transform="translate(80,55)">
+        <g data-from-stage="1" transform="translate(85,50)">
         <rect class="heat-cell" x="0" y="0" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.50"/>
         <rect class="heat-cell" x="22" y="0" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.70"/>
         <rect class="heat-cell" x="44" y="0" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.10"/>
@@ -439,31 +439,52 @@
         <rect class="heat-cell" x="66" y="54" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.30"/>
         <rect class="heat-cell" x="88" y="54" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.30"/>
         <rect class="heat-cell" x="110" y="54" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.30"/>
-        <rect class="heat-cell" x="0" y="72" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.10"/>
-        <rect class="heat-cell" x="22" y="72" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.20"/>
-        <rect class="heat-cell" x="44" y="72" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.10"/>
-        <rect class="heat-cell" x="66" y="72" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.20"/>
-        <rect class="heat-cell" x="88" y="72" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.50"/>
-        <rect class="heat-cell" x="110" y="72" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.70"/>
-        <rect class="heat-cell" x="0" y="90" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.10"/>
+        <rect class="heat-cell" x="0" y="72" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.15"/>
+        <rect class="heat-cell" x="22" y="72" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.25"/>
+        <rect class="heat-cell" x="44" y="72" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.15"/>
+        <rect class="heat-cell" x="66" y="72" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.35"/>
+        <rect class="heat-cell" x="88" y="72" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.25"/>
+        <rect class="heat-cell" x="110" y="72" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.25"/>
+        <rect class="heat-cell" x="0" y="90" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.18"/>
         <rect class="heat-cell" x="22" y="90" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.20"/>
         <rect class="heat-cell" x="44" y="90" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.10"/>
-        <rect class="heat-cell" x="66" y="90" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.10"/>
-        <rect class="heat-cell" x="88" y="90" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.60"/>
-        <rect class="heat-cell" x="110" y="90" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.70"/>
-        <rect x="-48" y="11" width="12" height="12" rx="2" fill="#e0245e"/>
-        <text class="axis-label-side" x="-30" y="17" style="text-anchor:start;" fill="#1a1a1a" font-weight="600">obj1</text>
-        <text class="axis-label-side" x="-8" y="53" fill="#1a1a1a" font-weight="600">bg</text>
-        <circle cx="-42" cy="89" r="6" fill="#1f6feb"/>
-        <text class="axis-label-side" x="-30" y="89" style="text-anchor:start;" fill="#1a1a1a" font-weight="600">obj2</text>
-        <text class="axis-label" transform="rotate(-30 10 122)" x="10" y="122">red</text>
-        <text class="axis-label" transform="rotate(-30 32 122)" x="32" y="122">square</text>
-        <text class="axis-label" transform="rotate(-30 54 122)" x="54" y="122">is</text>
-        <text class="axis-label" transform="rotate(-30 76 122)" x="76" y="122">left of</text>
-        <text class="axis-label" transform="rotate(-30 98 122)" x="98" y="122">blue</text>
-        <text class="axis-label" transform="rotate(-30 120 122)" x="120" y="122">circle</text>
+        <rect class="heat-cell" x="66" y="90" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.28"/>
+        <rect class="heat-cell" x="88" y="90" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.22"/>
+        <rect class="heat-cell" x="110" y="90" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.28"/>
+        <rect class="heat-cell" x="0" y="108" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.22"/>
+        <rect class="heat-cell" x="22" y="108" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.18"/>
+        <rect class="heat-cell" x="44" y="108" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.20"/>
+        <rect class="heat-cell" x="66" y="108" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.32"/>
+        <rect class="heat-cell" x="88" y="108" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.18"/>
+        <rect class="heat-cell" x="110" y="108" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.22"/>
+        <rect class="heat-cell" x="0" y="126" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.10"/>
+        <rect class="heat-cell" x="22" y="126" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.20"/>
+        <rect class="heat-cell" x="44" y="126" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.10"/>
+        <rect class="heat-cell" x="66" y="126" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.20"/>
+        <rect class="heat-cell" x="88" y="126" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.50"/>
+        <rect class="heat-cell" x="110" y="126" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.70"/>
+        <rect class="heat-cell" x="0" y="144" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.10"/>
+        <rect class="heat-cell" x="22" y="144" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.20"/>
+        <rect class="heat-cell" x="44" y="144" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.10"/>
+        <rect class="heat-cell" x="66" y="144" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.10"/>
+        <rect class="heat-cell" x="88" y="144" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.60"/>
+        <rect class="heat-cell" x="110" y="144" width="20" height="16" rx="2" fill="#94a3b8" fill-opacity="0.70"/>
+        <rect x="-58" y="11" width="12" height="12" rx="2" fill="#e0245e"/>
+        <text class="axis-label-side" x="-42" y="17" style="text-anchor:start;" fill="#1a1a1a" font-weight="600">obj1</text>
+        <path d="M-12,0 L-16,0 L-16,34 L-12,34" fill="none" stroke="#e0245e" stroke-width="1.5"/>
+        <text class="axis-label-side" x="-42" y="80" style="text-anchor:start;" fill="#1a1a1a" font-weight="600">bg</text>
+        <path d="M-12,36 L-16,36 L-16,124 L-12,124" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+        <circle cx="-52" cy="143" r="6" fill="#1f6feb"/>
+        <text class="axis-label-side" x="-42" y="143" style="text-anchor:start;" fill="#1a1a1a" font-weight="600">obj2</text>
+        <path d="M-12,126 L-16,126 L-16,160 L-12,160" fill="none" stroke="#1f6feb" stroke-width="1.5"/>
+        <text class="axis-label" transform="rotate(-30 10 178)" x="10" y="178">red</text>
+        <text class="axis-label" transform="rotate(-30 32 178)" x="32" y="178">square</text>
+        <text class="axis-label" transform="rotate(-30 54 178)" x="54" y="178">is</text>
+        <text class="axis-label" transform="rotate(-30 76 178)" x="76" y="178">left of</text>
+        <text class="axis-label" transform="rotate(-30 98 178)" x="98" y="178">blue</text>
+        <text class="axis-label" transform="rotate(-30 120 178)" x="120" y="178">circle</text>
         </g>
-        <g data-from-stage="2" transform="translate(80,55)">
+        <g data-from-stage="2" transform="translate(85,50)">
         <rect x="0" y="0" width="20" height="16" rx="2" fill="#ec4899" fill-opacity="0.73" stroke="#ec4899" stroke-width="1.2"/>
         <rect x="22" y="0" width="20" height="16" rx="2" fill="#10b981" fill-opacity="0.80" stroke="#10b981" stroke-width="1.2"/>
         <rect x="66" y="0" width="20" height="16" rx="2" fill="#ff8a3d" fill-opacity="0.83" stroke="#ff8a3d" stroke-width="1.2"/>
@@ -471,23 +492,26 @@
         <rect x="22" y="18" width="20" height="16" rx="2" fill="#10b981" fill-opacity="0.76" stroke="#10b981" stroke-width="1.2"/>
         <rect x="66" y="18" width="20" height="16" rx="2" fill="#ff8a3d" fill-opacity="0.80" stroke="#ff8a3d" stroke-width="1.2"/>
         </g>
-        <g data-from-stage="3" transform="translate(285,55)">
-        <text class="axis-label" x="0" y="9" text-anchor="start" fill="#ec4899" font-weight="600">obj1 → color1 [red]</text>
-        <rect x="0" y="12" width="110" height="12" rx="2" fill="none" stroke="#d4dae2" stroke-width="0.5"/>
-        <rect x="0" y="12" width="49.5" height="12" rx="2" fill="#ec4899" fill-opacity="0.85"/>
-        <text class="axis-label" x="54.5" y="21" text-anchor="start">0.45</text>
-        <text class="axis-label" x="0" y="37" text-anchor="start" fill="#10b981" font-weight="600">obj1 → shape1 [square]</text>
-        <rect x="0" y="40" width="110" height="12" rx="2" fill="none" stroke="#d4dae2" stroke-width="0.5"/>
-        <rect x="0" y="40" width="71.5" height="12" rx="2" fill="#10b981" fill-opacity="0.85"/>
-        <text class="axis-label" x="76.5" y="49" text-anchor="start">0.65</text>
-        <text class="axis-label" x="0" y="65" text-anchor="start" fill="#ff8a3d" font-weight="600">obj1 → rel [left of]</text>
-        <rect x="0" y="68" width="110" height="12" rx="2" fill="none" stroke="#d4dae2" stroke-width="0.5"/>
-        <rect x="0" y="68" width="82.5" height="12" rx="2" fill="#ff8a3d" fill-opacity="0.85"/>
-        <text class="axis-label" x="87.5" y="77" text-anchor="start">0.75</text>
+        <g data-from-stage="3" transform="translate(320,60)">
+        <rect x="0" y="2" width="10" height="10" rx="2" fill="#e0245e"/>
+        <text class="axis-label" x="15" y="9" text-anchor="start" fill="#ec4899" font-weight="600">obj1 → color1 [red]</text>
+        <rect x="0" y="14" width="110" height="12" rx="2" fill="none" stroke="#d4dae2" stroke-width="0.5"/>
+        <rect x="0" y="14" width="49.5" height="12" rx="2" fill="#ec4899" fill-opacity="0.85"/>
+        <text class="axis-label" x="54.5" y="23" text-anchor="start">0.45</text>
+        <rect x="0" y="32" width="10" height="10" rx="2" fill="#e0245e"/>
+        <text class="axis-label" x="15" y="39" text-anchor="start" fill="#10b981" font-weight="600">obj1 → shape1 [square]</text>
+        <rect x="0" y="44" width="110" height="12" rx="2" fill="none" stroke="#d4dae2" stroke-width="0.5"/>
+        <rect x="0" y="44" width="71.5" height="12" rx="2" fill="#10b981" fill-opacity="0.85"/>
+        <text class="axis-label" x="76.5" y="53" text-anchor="start">0.65</text>
+        <rect x="0" y="62" width="10" height="10" rx="2" fill="#e0245e"/>
+        <text class="axis-label" x="15" y="69" text-anchor="start" fill="#ff8a3d" font-weight="600">obj1 → rel [left of]</text>
+        <rect x="0" y="74" width="110" height="12" rx="2" fill="none" stroke="#d4dae2" stroke-width="0.5"/>
+        <rect x="0" y="74" width="82.5" height="12" rx="2" fill="#ff8a3d" fill-opacity="0.85"/>
+        <text class="axis-label" x="87.5" y="83" text-anchor="start">0.75</text>
         </g>
         <g data-from-stage="4">
-        <path d="M450,100 C490,100 510,100 550,100" stroke="#5b6470" stroke-width="2" fill="none" marker-end="url(#ah-gray)"/>
-        <text class="axis-label" x="500" y="94" text-anchor="middle">aggregate</text>
+        <path d="M495,110 C520,110 535,110 550,110" stroke="#5b6470" stroke-width="2" fill="none" marker-end="url(#ah-gray)"/>
+        <text class="axis-label" x="522" y="104" text-anchor="middle">aggregate</text>
         </g>
         <g data-from-stage="1" transform="translate(560,55)">
         <text class="axis-label-side" x="-6" y="11.0">L0</text>
