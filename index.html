@@ -426,12 +426,6 @@
             <text x="13" y="8">VO</text>
           </g>
         </g>
-        <!-- RH attention pattern strip (output of QK over image positions) -->
-        <g data-from-stage="2" transform="translate(335,114)">
-          <rect width="150" height="14" rx="3" fill="url(#gradLeftBlue)" stroke="#d4dae2" stroke-width="0.5"/>
-          <text class="qkv-label attn-label" x="-4" y="10" text-anchor="end" fill="#1f6feb">attn</text>
-          <text class="qkv-label attn-label-side" x="154" y="10">left ◀▶ right</text>
-        </g>
 
         <!-- Object Head with QK/VO phase badges -->
         <g class="head head-object" data-from-stage="4" transform="translate(335,190)">
@@ -447,38 +441,62 @@
             <text x="13" y="8">VO</text>
           </g>
         </g>
-        <!-- OH attention pattern (2 rows: cube vs sphere over image positions) -->
-        <g data-from-stage="4" transform="translate(335,244)">
-          <rect width="150" height="9" rx="2" fill="url(#gradLeftRed)" stroke="#d4dae2" stroke-width="0.5"/>
-          <rect y="11" width="150" height="9" rx="2" fill="url(#gradRightBlue)" stroke="#d4dae2" stroke-width="0.5"/>
-          <text class="qkv-label attn-label" x="-4" y="7"  text-anchor="end" fill="#e0245e">cube</text>
-          <text class="qkv-label attn-label" x="-4" y="18" text-anchor="end" fill="#1f6feb">sphere</text>
-        </g>
 
-        <!-- Stage 2 (RH·QK): relation token → RH (K,V from text) -->
+        <!-- ============ Relation Head · QK (stage 2) ============ -->
+        <!-- K: relation token → RH (text → head, left to right) -->
         <path class="arrow" data-from-stage="2" stroke="#1f6feb" marker-end="url(#ah-blue)"
-              d="M180,128 C260,128 280,84 333,84"/>
-        <text class="qkv-label" data-from-stage="2" x="248" y="98" fill="#1f6feb">K,V</text>
+              d="M180,128 C250,128 280,84 333,84"/>
+        <text class="qkv-label" data-from-stage="2" data-until-stage="2" x="252" y="100" fill="#1f6feb">K</text>
+        <text class="qkv-label" data-from-stage="3" x="248" y="100" fill="#1f6feb">K,V</text>
+        <!-- Q: image grid → RH (image → head, right to left, dashed) -->
+        <path class="arrow arrow-dashed" data-from-stage="2" stroke="#1f6feb" marker-end="url(#ah-blue)"
+              d="M608,75 C560,45 540,42 487,58"/>
+        <text class="qkv-label" data-from-stage="2" x="548" y="40" fill="#1f6feb">Q</text>
 
-        <!-- Stage 3 (RH·VO): RH → image grid (output: positional tag) -->
+        <!-- ============ Relation Head · VO (stage 3) ============ -->
+        <!-- O: RH → image grid (head → image, left to right) -->
         <path class="arrow" data-from-stage="3" stroke="#1f6feb" marker-end="url(#ah-blue)"
-              d="M485,84 C540,84 560,130 608,140"/>
-        <text class="qkv-label" data-from-stage="3" x="540" y="118" fill="#1f6feb">O</text>
-        <g data-from-stage="3" transform="translate(610,55)">
-          <rect width="180" height="180" rx="6" fill="url(#gradLeft)"/>
-        </g>
+              d="M485,108 C540,108 560,128 608,140"/>
+        <text class="qkv-label" data-from-stage="3" x="548" y="122" fill="#1f6feb">O</text>
 
-        <!-- Stage 4 (OH·QK): shape tokens → OH (K,V from text) -->
+        <!-- ============ Object Head · QK (stage 4) ============ -->
+        <!-- K: shape tokens → OH -->
         <path class="arrow" data-from-stage="4" stroke="#e0245e" marker-end="url(#ah-red)"
               d="M180,88  C260,88  280,214 333,214"/>
         <path class="arrow" data-from-stage="4" stroke="#e0245e" marker-end="url(#ah-red)"
               d="M180,208 C260,208 280,214 333,214"/>
-        <text class="qkv-label" data-from-stage="4" x="248" y="148" fill="#e0245e">K,V</text>
+        <text class="qkv-label" data-from-stage="4" data-until-stage="4" x="252" y="148" fill="#e0245e">K</text>
+        <text class="qkv-label" data-from-stage="5" x="248" y="148" fill="#e0245e">K,V</text>
+        <!-- Q: image grid → OH (image → head, right to left, dashed) -->
+        <path class="arrow arrow-dashed" data-from-stage="4" stroke="#e0245e" marker-end="url(#ah-red)"
+              d="M608,200 C560,178 540,176 487,190"/>
+        <text class="qkv-label" data-from-stage="4" x="548" y="170" fill="#e0245e">Q</text>
 
-        <!-- Stage 5 (OH·VO): OH → image grid (output: shapes) -->
+        <!-- ============ Object Head · VO (stage 5) ============ -->
+        <!-- O: OH → image grid -->
         <path class="arrow" data-from-stage="5" stroke="#e0245e" marker-end="url(#ah-red)"
-              d="M485,214 C540,214 560,180 608,175"/>
-        <text class="qkv-label" data-from-stage="5" x="540" y="192" fill="#e0245e">O</text>
+              d="M485,238 C540,238 560,210 608,205"/>
+        <text class="qkv-label" data-from-stage="5" x="548" y="222" fill="#e0245e">O</text>
+
+        <!-- ============ Image grid overlays ============ -->
+        <!-- Stage 2 only: attention-score gradient (QK output, ON the image grid) -->
+        <g data-from-stage="2" data-until-stage="2" transform="translate(610,55)">
+          <rect width="180" height="180" rx="6" fill="url(#gradLeftBlue)"/>
+          <text class="qkv-label" x="90" y="-8" text-anchor="middle" fill="#1f6feb">attn scores</text>
+        </g>
+        <!-- Stage 3+: "becoming obj1" tag (purple) on left half of image grid; persists -->
+        <g data-from-stage="3" transform="translate(610,55)">
+          <rect width="90" height="180" rx="6" fill="#7b2cbf" fill-opacity="0.32"/>
+          <text class="qkv-label" x="45" y="-8" text-anchor="middle" fill="#7b2cbf">"becoming obj1" tag</text>
+        </g>
+        <!-- Stage 4 only: OH-QK attention pattern — tagged → cube, untagged → sphere -->
+        <g data-from-stage="4" data-until-stage="4" transform="translate(610,55)">
+          <rect x="0"  width="90"  height="180" fill="#e0245e" fill-opacity="0.16"/>
+          <rect x="90" width="90"  height="180" fill="#1f6feb" fill-opacity="0.16"/>
+          <text class="qkv-label" x="45"  y="172" text-anchor="middle" fill="#e0245e">attn → cube</text>
+          <text class="qkv-label" x="135" y="172" text-anchor="middle" fill="#1f6feb">attn → sphere</text>
+        </g>
+        <!-- Stage 5+: final rendered visual features -->
         <g data-from-stage="5" transform="translate(610,55)">
           <rect x="28" y="70" width="40" height="40" rx="4" fill="#e0245e"/>
           <circle cx="135" cy="92" r="22" fill="#1f6feb"/>
@@ -560,10 +578,10 @@
     rte: [
       'Click <b>Play</b> to trace the RTE-DiT circuit.',
       'Text tokens enter cross-attention; image tokens carry positional embeddings.',
-      '<b>Relation Head · QK</b>: <i>"left of"</i>\'s key interacts with image positional queries → a position-dependent attention pattern (blue strip).',
-      '<b>Relation Head · VO</b>: the value is written into image tokens, weighted by the QK pattern → a left-to-right positional tag on the grid.',
-      '<b>Object Head · QK</b>: image queries (now carrying tags) match shape keys — left positions align with "cube", right with "sphere" (red/blue rows).',
-      '<b>Object Head · VO</b>: shape values are written into the matched positions; the picture renders.'
+      '<b>Relation Head · QK</b>: <b>Q</b> from image (positional) + <b>K</b> from <i>"left of"</i> → position-dependent attention scores (blue gradient on the image grid).',
+      '<b>Relation Head · VO</b>: <b>V</b> from text, <b>O</b> written into image tokens → a <span style="color:#7b2cbf;font-weight:600">"becoming obj1" tag</span> (purple) attached to the targeted positions.',
+      '<b>Object Head · QK</b>: <b>Q</b> from image + <b>K</b> from shape tokens — tokens with the <i>obj1 tag</i> attend to "cube"; untagged tokens attend to "sphere".',
+      '<b>Object Head · VO</b>: <b>V</b> from text, <b>O</b> written → the actual visual features of cube and sphere render in their positions.'
     ],
     t5: [
       'Click <b>Play</b> to trace the T5-DiT circuit.',
@@ -580,7 +598,9 @@
     var nodes = widget.querySelectorAll('[data-from-stage]');
     for (var i = 0; i < nodes.length; i++) {
       var n = nodes[i];
-      n.classList.toggle('on', +n.dataset.fromStage <= stage);
+      var from = +n.dataset.fromStage;
+      var until = n.dataset.untilStage ? +n.dataset.untilStage : Infinity;
+      n.classList.toggle('on', from <= stage && stage <= until);
     }
     explainer.innerHTML = messages[mode][stage] || messages[mode][0];
   }
