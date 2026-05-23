@@ -504,15 +504,19 @@
           <rect width="180" height="180" rx="6" fill="url(#gradLeftBlue)"/>
           <text class="qkv-label" x="90" y="-8" text-anchor="middle" fill="#1f6feb">attn scores</text>
         </g>
-        <!-- Stage 3+: "becoming obj1" tag (purple) on left half of image grid; persists -->
+        <!-- Stage 3+: "becoming obj1" tag (purple, left half) and "becoming obj2" tag (green, right half); persist -->
         <g data-from-stage="3" transform="translate(610,55)">
           <rect width="90" height="180" rx="6" fill="#7b2cbf" fill-opacity="0.32"/>
           <text class="qkv-label" x="45" y="-8" text-anchor="middle" fill="#7b2cbf">"becoming obj1" tag</text>
         </g>
-        <!-- Stage 4 only: OH-QK attention pattern — tagged → square, untagged → circle -->
+        <g data-from-stage="3" transform="translate(610,55)">
+          <rect x="90" width="90" height="180" rx="6" fill="#10b981" fill-opacity="0.28"/>
+          <text class="qkv-label" x="135" y="-8" text-anchor="middle" fill="#10b981">"becoming obj2" tag</text>
+        </g>
+        <!-- Stage 4 only: OH-QK attention routing (tags already cover the halves; tints are subtle accents) -->
         <g data-from-stage="4" data-until-stage="4" transform="translate(610,55)">
-          <rect x="0"  width="90"  height="180" fill="#e0245e" fill-opacity="0.16"/>
-          <rect x="90" width="90"  height="180" fill="#1f6feb" fill-opacity="0.16"/>
+          <rect x="0"  width="90"  height="180" fill="#e0245e" fill-opacity="0.08"/>
+          <rect x="90" width="90"  height="180" fill="#1f6feb" fill-opacity="0.08"/>
           <text class="qkv-label" x="45"  y="172" text-anchor="middle" fill="#e0245e">attn → square</text>
           <text class="qkv-label" x="135" y="172" text-anchor="middle" fill="#1f6feb">attn → circle</text>
         </g>
@@ -534,7 +538,7 @@
           <path class="fuse" marker-end="url(#ah-purple)" d="M180,138 C290,138 290,206 184,206"/>
           <path class="fuse" marker-end="url(#ah-purple)" d="M180,172 C280,172 280,206 184,206"/>
         </g>
-        <g class="annot" data-from-stage="2" data-until-stage="2"><text x="240" y="265">context fuses into the "circle" token</text></g>
+        <g class="annot" data-from-stage="2" data-until-stage="2"><text x="240" y="265">context fuses into the last token ("circle")</text></g>
 
         <!-- v_rel sub-pill inside the circle token (persists from stage 2) -->
         <g class="vrel-pill" data-from-stage="2" transform="translate(135,198)">
@@ -618,15 +622,19 @@
           <rect width="180" height="180" rx="6" fill="url(#gradLeftPurple)"/>
           <text class="qkv-label" x="90" y="-8" text-anchor="middle" fill="#7b2cbf">attn scores (E_pos Q · K v_rel)</text>
         </g>
-        <!-- Stage 4+: "becoming obj1" purple tag on left half -->
+        <!-- Stage 4+: "becoming obj1" tag (purple, left half) and "becoming obj2" tag (green, right half); persist -->
         <g data-from-stage="4" transform="translate(610,55)">
           <rect width="90" height="180" rx="6" fill="#7b2cbf" fill-opacity="0.32"/>
           <text class="qkv-label" x="45" y="-8" text-anchor="middle" fill="#7b2cbf">"becoming obj1" tag</text>
         </g>
-        <!-- Stage 5 only: OH-QK attention pattern -->
+        <g data-from-stage="4" transform="translate(610,55)">
+          <rect x="90" width="90" height="180" rx="6" fill="#10b981" fill-opacity="0.28"/>
+          <text class="qkv-label" x="135" y="-8" text-anchor="middle" fill="#10b981">"becoming obj2" tag</text>
+        </g>
+        <!-- Stage 5 only: OH-QK attention routing -->
         <g data-from-stage="5" data-until-stage="5" transform="translate(610,55)">
-          <rect x="0"  width="90"  height="180" fill="#e0245e" fill-opacity="0.16"/>
-          <rect x="90" width="90"  height="180" fill="#1f6feb" fill-opacity="0.16"/>
+          <rect x="0"  width="90"  height="180" fill="#e0245e" fill-opacity="0.08"/>
+          <rect x="90" width="90"  height="180" fill="#1f6feb" fill-opacity="0.08"/>
           <text class="qkv-label" x="45"  y="172" text-anchor="middle" fill="#e0245e">attn → square</text>
           <text class="qkv-label" x="135" y="172" text-anchor="middle" fill="#1f6feb">attn → circle</text>
         </g>
@@ -693,7 +701,7 @@
       'Click <b>Play</b> to trace the RTE-DiT circuit.',
       'Text tokens enter cross-attention; image tokens carry positional embeddings.',
       '<b>Relation Head · QK</b>: <b>Q</b> from image (positional) + <b>K</b> from <i>"left of"</i> → position-dependent attention scores (blue gradient on the image grid).',
-      '<b>Relation Head · VO</b>: <b>V</b> from text, <b>O</b> written into image tokens → a <span style="color:#7b2cbf;font-weight:600">"becoming obj1" tag</span> (purple) attached to the targeted positions.',
+      '<b>Relation Head · VO</b>: <b>V</b> from text, <b>O</b> written into image tokens → a <span style="color:#7b2cbf;font-weight:600">"becoming obj1"</span> tag on left positions and a <span style="color:#10b981;font-weight:600">"becoming obj2"</span> tag on the right.',
       '<b>Object Head · QK</b>: <b>Q</b> from image + <b>K</b> from shape tokens — positions tagged "becoming obj1" attend to "square"; positions tagged "becoming obj2" attend to "circle".',
       '<b>Object Head · VO</b>: <b>V</b> from text, <b>O</b> written → the actual visual features of square and circle render in their positions.'
     ],
@@ -702,7 +710,7 @@
       'Text tokens enter cross-attention; image tokens carry positional embeddings.',
       '<b>Context fusion</b>: T5 contextualizes the prompt — a <span style="color:#7b2cbf;font-weight:600">v_rel</span> component (purple) materializes inside the "circle" token, carrying the relation semantics.',
       '<b>Relation Head · QK</b>: <b>Q</b> from image + <b>K</b> from <b>v_rel</b> → a position-dependent attention map. Some heads align with the relation direction (→ left), others anti-align (→ right).',
-      '<b>Relation Head · VO</b>: <b>V</b> from v_rel, <b>O</b> written → a "becoming obj1" tag (purple) on the targeted positions.',
+      '<b>Relation Head · VO</b>: <b>V</b> from v_rel, <b>O</b> written → a <span style="color:#7b2cbf;font-weight:600">"becoming obj1"</span> tag on left positions and a <span style="color:#10b981;font-weight:600">"becoming obj2"</span> tag on the right.',
       '<b>Object Head · QK</b>: <b>Q</b> from image + <b>K</b> from shape tokens — positions tagged "becoming obj1" attend to "square"; positions tagged "becoming obj2" attend to "circle".',
       '<b>Object Head · VO</b>: <b>V</b> from text, <b>O</b> written → square and circle render in their positions.'
     ]
