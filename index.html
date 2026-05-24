@@ -374,7 +374,7 @@
   <p>Text-to-image diffusion models routinely fail to place objects in the correct spatial configuration — "a red square to the <i>left of</i> a blue circle" comes out swapped or merged. We ask <b>mechanistically</b>: when a Diffusion Transformer <i>does</i> get spatial relations right, how does it do it, and why does the same architecture fail under tiny prompt changes?</p>
   <p>We train PixArt-style DiTs from scratch on a controlled two-object relational dataset, varying only the text encoder. Using a scalable <b>attention synopsis</b> method we identify the specific cross-attention heads that carry relational information, trace the circuit end-to-end, and verify each step with weight-space analysis, ablations, and causal embedding manipulations.</p>
 
-  <div class="figure">
+  <div class="figure" style="max-width:60%; margin-left:auto; margin-right:auto;">
     <img src="https://arxiv.org/html/2601.06338v2/figs/Data_schematics-03.png" alt="Two-object relational dataset and DiT setup" />
     <div class="caption"><b>Figure 1.</b> The controlled two-object setup: prompts of the form <span class="inline-code">[color1] [shape1] [relation] [color2] [shape2]</span> over 3 shapes, 2 colors, and 8 spatial relations. We train DiT-B (and smaller variants) from scratch with T5-XXL, random token embeddings (RTE), or RTE without positional encoding.</div>
   </div>
