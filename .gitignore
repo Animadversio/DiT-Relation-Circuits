@@ -93,3 +93,4 @@ Thumbs.db
 # Local / secrets (uncomment if you store keys in repo-adjacent files)
 # *.pem
 # secrets/
+media/
