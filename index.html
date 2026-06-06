@@ -1204,6 +1204,11 @@
     <div class="caption"><b>Figure 5.</b> The object generation head mediates between shape tokens and the tagged image regions, completing the two-stage circuit.</div>
   </div>
 
+  <div class="figure">
+    <img src="assets/denoising_attn_anim_multirel.gif" alt="Animated attention maps of the relation and object heads across denoising timesteps, for multiple spatial relations" loading="lazy" />
+    <div class="caption"><b>Figure 5c (animated).</b> Cross-attention maps of the <b>relation head</b> and <b>object head</b> over diffusion denoising timesteps, swept across the 8 spatial relations. The relation head writes a position-dependent gradient on image tokens early in denoising; the object head then reads that gradient and routes shape information to the correct positions — the same two-stage circuit summarized in Fig 6, here in motion.</div>
+  </div>
+
   <h3>T5-DiT: information fusion in object tokens</h3>
   <div class="figure">
     <img src="https://arxiv.org/html/2601.06338v2/figs/Figure_DiT_T5_wordvec_manipulation_Final.png" alt="T5-DiT vector arithmetic on contextual embeddings" />
