@@ -291,6 +291,29 @@
   .static-fig6 > summary:hover { color: var(--fg); }
   .static-fig6[open] > summary { color: var(--fg); border-bottom: 1px solid var(--border); margin-bottom: 8px; }
   .static-fig6 .figure { margin: 8px 0 12px; }
+  /* Seed toggle for denoising-attention animation */
+  .seed-toggle {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin: 0 0 10px;
+    padding: 4px 6px;
+    border: 1px solid var(--border); border-radius: 999px;
+    background: #fff;
+  }
+  .seed-toggle-label {
+    font-size: 0.82rem; color: var(--muted); padding: 0 4px;
+    font-family: "Google Sans", sans-serif;
+  }
+  .seed-btn {
+    padding: 3px 12px; border: none;
+    border-radius: 999px; background: transparent;
+    font-family: "JetBrains Mono", monospace; font-size: 0.82rem;
+    color: var(--muted); cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .seed-btn:hover { color: var(--fg); }
+  .seed-btn.active {
+    background: var(--accent); color: #fff; font-weight: 600;
+  }
   /* Generic small text used in synopsis / screening widgets */
   .circuit-svg .axis-label {
     font-family: "JetBrains Mono", monospace; font-size: 9px;
@@ -1204,9 +1227,15 @@
     <div class="caption"><b>Figure 5.</b> The object generation head mediates between shape tokens and the tagged image regions, completing the two-stage circuit.</div>
   </div>
 
-  <div class="figure">
-    <img src="assets/denoising_attn_anim_multirel.gif" alt="Animated attention maps of the relation and object heads across denoising timesteps, for multiple spatial relations" loading="lazy" />
-    <div class="caption"><b>Figure 5c (animated).</b> Cross-attention maps of the <b>relation head</b> and <b>object head</b> over diffusion denoising timesteps, swept across the 8 spatial relations. The relation head writes a position-dependent gradient on image tokens early in denoising; the object head then reads that gradient and routes shape information to the correct positions — the same two-stage circuit summarized in Fig 6, here in motion.</div>
+  <div class="figure" id="denoising-anim-figure">
+    <div class="seed-toggle" role="tablist" aria-label="Sample seed">
+      <span class="seed-toggle-label">sample seed:</span>
+      <button class="seed-btn active" data-seed="123" aria-pressed="true">123</button>
+      <button class="seed-btn" data-seed="456" aria-pressed="false">456</button>
+      <button class="seed-btn" data-seed="789" aria-pressed="false">789</button>
+    </div>
+    <img id="denoising-anim" src="assets/denoising_attn_anim_multirel_seed123.gif" alt="Animated attention maps of the relation and object heads across denoising timesteps, for multiple spatial relations" loading="lazy" />
+    <div class="caption"><b>Figure 5c (animated).</b> Cross-attention maps of the <b>relation head</b> and <b>object head</b> over diffusion denoising timesteps, swept across the 8 spatial relations. The relation head writes a position-dependent gradient on image tokens early in denoising; the object head then reads that gradient and routes shape information to the correct positions — the same two-stage circuit summarized in Fig 6, here in motion. Use the seed toggle above to view different sample seeds.</div>
   </div>
 
   <h3>T5-DiT: information fusion in object tokens</h3>
@@ -1361,6 +1390,24 @@
     ] },
     'x'
   );
+})();
+
+// ---------- Denoising-anim seed toggle ----------
+(function () {
+  var fig = document.getElementById('denoising-anim-figure');
+  if (!fig) return;
+  var img = fig.querySelector('#denoising-anim');
+  fig.querySelectorAll('.seed-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var seed = btn.dataset.seed;
+      img.src = 'assets/denoising_attn_anim_multirel_seed' + seed + '.gif';
+      fig.querySelectorAll('.seed-btn').forEach(function (b) {
+        var on = b === btn;
+        b.classList.toggle('active', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+    });
+  });
 })();
 </script>
 
